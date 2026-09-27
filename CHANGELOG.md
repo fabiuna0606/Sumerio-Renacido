@@ -11,6 +11,24 @@ El número de versión tiene la forma `mayor.menor.parche`:
 - **Menor** — **añadidos** que no invalidan lo ya escrito.
 - **Parche** — **correcciones**.
 
+## v0.2.1-borrador
+
+Infraestructura del repositorio. No cambia nada del estándar ni del contenido
+de ninguna ficha ya existente.
+
+- **Integración continua:** `.github/workflows/ci.yml` ejecuta el validador de
+  fichas y las pruebas con Python 3.11, sin dependencias externas, en cada
+  push y en cada pull request. El workflow falla si falla cualquiera de los
+  dos.
+- **Fichas técnicas nuevas**, ambas de convención y en estado `propuesta`:
+  **TEC-003** (estrategia de ramas: `main` es la rama estable y por defecto;
+  cada sesión trabaja en su propia rama y entra a `main` solo mediante un PR
+  que Fabián fusiona) y **TEC-004** (integración continua: ningún PR se
+  fusiona con la CI en rojo).
+- `CLAUDE.md` recoge las dos reglas en la sección 8, «Ramas e integración
+  continua»; el cierre de sesión pasa a ser la sección 9.
+- Las pruebas esperan ahora 15 fichas en `decisiones/`.
+
 ## v0.2.0-borrador
 
 Resolución de los pendientes de la sesión 1. Ninguna ficha cambia de estado:
