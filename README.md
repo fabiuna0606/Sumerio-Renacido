@@ -1,4 +1,4 @@
-# sumerio renacido (eme-ĝir gibil)
+# sumerio renacido (emegir gibil)
 
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
 **documentado y auditable**, con un perfil **equilibrado** entre fidelidad
@@ -77,11 +77,18 @@ Puntaje = E − C + FL
 
 donde `E` es la evidencia (0–3), `C` el costo de aprendizaje para un
 hispanohablante (0–3) y `FL` la carga funcional (0 o 1). Un rasgo se incluye
-**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Cuando ninguna opción
-alcanza `E ≥ 2`, la ficha es de tipo `convencion`: se adopta la convención
-académica y no se puntúa. Las escalas son **ordinales**: el puntaje es una
-regla de decisión explícita, no una medida exacta. El detalle de las escalas
-está en `CLAUDE.md`.
+**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Las escalas son
+**ordinales**: el puntaje es una regla de decisión explícita, no una medida
+exacta. El detalle de las escalas está en `CLAUDE.md`.
+
+## Tipos de ficha
+
+- **`puntuada`** — decisión **binaria** sobre incluir o no un rasgo. **Siempre
+  se puntúa**, aunque `E < 2`: un `E` bajo lleva a **excluir** por la propia
+  fórmula, y no convierte la ficha en otro tipo.
+- **`convencion`** — **elección entre formas alternativas** (por ejemplo, la
+  posición del acento o la letra que se usa) cuando **ninguna alcanza
+  `E ≥ 2`**. Se adopta la convención académica y **no se puntúa**.
 
 ## Cómo ejecutar las pruebas
 

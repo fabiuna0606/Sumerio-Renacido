@@ -21,11 +21,16 @@ titulo = ""
 area = ""
 
 # Tipo de ficha. Solo uno de: "puntuada", "convencion".
-#   "puntuada"   → se aplica Puntaje = E − C + FL y se rellenan E, C, FL,
-#                  puntaje e incluye.
-#   "convencion" → ninguna opción alcanza E ≥ 2; se adopta la convención
-#                  académica y NO se puntúa (no incluyas los campos de
-#                  puntaje: el validador los rechaza).
+#   "puntuada"   → decisión binaria sobre incluir o no un rasgo. Siempre se
+#                  puntúa, aunque E < 2: se aplica Puntaje = E − C + FL y se
+#                  rellenan E, C, FL, puntaje e incluye. Un E bajo lleva a
+#                  excluir por la propia fórmula, y no convierte la ficha en
+#                  otro tipo.
+#   "convencion" → elección entre formas alternativas (por ejemplo, la
+#                  posición del acento o la letra que se usa) cuando ninguna
+#                  alcanza E ≥ 2; se adopta la convención académica y NO se
+#                  puntúa (no incluyas los campos de puntaje: el validador
+#                  los rechaza).
 tipo = ""
 
 # La pregunta que la ficha responde, formulada de modo que admita respuesta.

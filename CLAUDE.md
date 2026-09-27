@@ -1,7 +1,7 @@
 # CLAUDE.md — instrucciones permanentes del proyecto
 
 Este archivo gobierna todas las sesiones de trabajo en el repositorio
-**sumerio renacido** (eme-ĝir gibil). Léelo completo antes de modificar nada.
+**sumerio renacido** (emegir gibil). Léelo completo antes de modificar nada.
 
 El proyecto busca revivir el sumerio como lengua hablada mediante un estándar
 documentado y auditable, con un perfil **equilibrado** entre fidelidad
@@ -38,11 +38,17 @@ Puntaje = E − C + FL
 
 Un rasgo **se incluye si y solo si Puntaje > 0**; un puntaje de **0 excluye**.
 
-Si **ninguna opción alcanza E ≥ 2**, la ficha es de tipo `convencion`: se
-adopta la convención académica y **no se puntúa**.
-
 Las escalas son **ordinales**: el puntaje es una **regla de decisión
 explícita, no una medida exacta**.
+
+### Tipos de ficha
+
+- **`puntuada`** — decisión **binaria** sobre incluir o no un rasgo. **Siempre
+  se puntúa**, aunque `E < 2`: un `E` bajo lleva a **excluir** por la propia
+  fórmula, y no convierte la ficha en otro tipo.
+- **`convencion`** — **elección entre formas alternativas** (por ejemplo, la
+  posición del acento o la letra que se usa) cuando **ninguna alcanza
+  `E ≥ 2`**. Se adopta la convención académica y **no se puntúa**.
 
 ### E — evidencia
 
@@ -84,10 +90,15 @@ Se usa **el primer nivel que ofrezca solución**:
 - **Jagersma, A Descriptive Grammar of Sumerian (2010)** — gramática
   normativa del proyecto.
 - Zólyomi, *An Introduction to the Grammar of Sumerian* (2017).
-- Foxvog, *Introduction to Sumerian Grammar*.
-- ePSD2.
-- Oracc.
-- ETCSL.
+- Foxvog, *Introduction to Sumerian Grammar*. Año y edición: FUENTE POR
+  VERIFICAR.
+- ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27.
+- Oracc. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+- ETCSL. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+
+Las referencias digitales se citan con su versión y su fecha de consulta
+cuando se conocen; mientras no se conozcan, se escribe `FUENTE POR VERIFICAR`
+en su lugar.
 
 No cites páginas, secciones ni pasajes concretos de estas obras sin que
 Fabián los haya verificado; mientras no lo estén, usa `FUENTE POR VERIFICAR`.
