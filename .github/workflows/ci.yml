@@ -1,0 +1,33 @@
+# Integración continua del proyecto "sumerio renacido".
+# Ejecuta el validador de fichas y las pruebas en cada push y en cada pull
+# request. Solo biblioteca estándar de Python 3.11: no instala dependencias.
+name: Validador y pruebas
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-test:
+    name: Validador de fichas y pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Mostrar la versión de Python
+        run: python3 --version
+
+      - name: Validar las fichas de decisión
+        run: python3 scripts/validate_decisions.py
+
+      - name: Ejecutar las pruebas
+        run: python3 -m unittest discover -s tests -v
