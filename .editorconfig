@@ -1,0 +1,18 @@
+# Configuracion de editores para el proyecto "sumerio renacido"
+# Reglas tecnicas del proyecto: UTF-8, fin de linea LF, sin espacios finales.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+[*.tsv]
+indent_style = tab
+trim_trailing_whitespace = false
