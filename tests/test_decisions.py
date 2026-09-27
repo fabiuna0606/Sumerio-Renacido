@@ -24,6 +24,26 @@ DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
 EXPECTED_CARD_COUNT = 13
 
+EPSD2_SOURCE = (
+    "ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27"
+)
+
+# Fichas reales cuyas fuentes ya no son "FUENTE POR VERIFICAR". Las que no
+# aparecen aquí siguen sin ninguna fuente comprobada.
+REAL_CARD_SOURCES = {"ORT-001": [EPSD2_SOURCE]}
+
+# Letra descartada por ORT-001 (g con circunflejo, U+011D). Se escribe con
+# escapes para que este archivo de pruebas no la contenga.
+DISCARDED_LETTER = "\u011d"
+DISCARDED_LETTER_DECOMPOSED = "g\u0302"
+
+# Única ruta del repositorio que puede mencionarla: la ficha que describe la
+# opción descartada.
+DISCARDED_LETTER_EXEMPT_FILES = frozenset({"decisiones/ORT-001.md"})
+
+# Directorios que no forman parte del texto del repositorio.
+IGNORED_DIRECTORIES = frozenset({".git", "__pycache__"})
+
 VALID_CARD = {
     "id": "TEC-900",
     "titulo": "Ficha de prueba",
@@ -138,13 +158,20 @@ class TestRealCards(unittest.TestCase):
                 text = path.read_text(encoding="utf-8")
                 self.assertTrue(unicodedata.is_normalized("NFC", text))
 
-    def test_real_cards_are_proposals_pending_verification(self) -> None:
+    def test_real_cards_are_proposals(self) -> None:
         for path in validator.card_paths(DECISIONS_DIR):
             with self.subTest(ficha=path.name):
                 metadata, _ = validator.load_card(path)
                 self.assertEqual(metadata["estado"], "propuesta")
-                self.assertEqual(metadata["fuentes"],
-                                 [validator.UNVERIFIED_SOURCE])
+
+    def test_real_cards_declare_the_expected_sources(self) -> None:
+        for path in validator.card_paths(DECISIONS_DIR):
+            with self.subTest(ficha=path.name):
+                metadata, _ = validator.load_card(path)
+                expected = REAL_CARD_SOURCES.get(
+                    path.stem, [validator.UNVERIFIED_SOURCE]
+                )
+                self.assertEqual(metadata["fuentes"], expected)
 
 
 class TestValidCards(CardDirectoryMixin, unittest.TestCase):
@@ -294,8 +321,8 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
         self.assertErrorMentions("TEC-900.md", "a la propia ficha")
 
     def test_text_not_in_nfc_is_detected(self) -> None:
-        decomposed = unicodedata.normalize("NFD", "ĝ")
-        self.assertNotEqual(decomposed, "ĝ")
+        decomposed = unicodedata.normalize("NFD", "š")
+        self.assertNotEqual(decomposed, "š")
         self.write_card(VALID_CARD, body=f"\nLa letra {decomposed} sin componer.\n")
         self.assertErrorMentions("TEC-900.md", "no está en NFC")
 
@@ -310,6 +337,55 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
         self.write_card(dict(CONVENTION_CARD, area="sintaxis"))
         report = validator.validate_directory(self.directory)
         self.assertEqual(sorted(report), ["TEC-901.md"])
+
+
+class TestDiscardedLetter(unittest.TestCase):
+    """ORT-001 decide la letra de la romanización práctica.
+
+    La letra descartada no puede aparecer en ningún archivo del repositorio,
+    salvo en la propia ficha ORT-001, que la menciona al describir la opción
+    descartada.
+    """
+
+    def repository_files(self) -> list[tuple[Path, str]]:
+        """Archivos del repositorio, con su ruta relativa en formato POSIX."""
+        files = []
+        for path in sorted(PROJECT_ROOT.rglob("*")):
+            if not path.is_file():
+                continue
+            relative = path.relative_to(PROJECT_ROOT)
+            if IGNORED_DIRECTORIES.intersection(relative.parts):
+                continue
+            files.append((path, relative.as_posix()))
+        return files
+
+    def test_exempt_file_exists(self) -> None:
+        for name in sorted(DISCARDED_LETTER_EXEMPT_FILES):
+            with self.subTest(archivo=name):
+                self.assertTrue(
+                    (PROJECT_ROOT / name).is_file(),
+                    msg=f"la excepción {name} ya no existe en el repositorio",
+                )
+
+    def test_discarded_letter_only_in_the_exempt_file(self) -> None:
+        offenders = []
+        for path, relative in self.repository_files():
+            if relative in DISCARDED_LETTER_EXEMPT_FILES:
+                continue
+            try:
+                text = path.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            if DISCARDED_LETTER in text or DISCARDED_LETTER_DECOMPOSED in text:
+                offenders.append(relative)
+        self.assertEqual(
+            offenders,
+            [],
+            msg=(
+                "la letra descartada por ORT-001 aparece en archivos que "
+                f"deben usar la letra adoptada: {', '.join(offenders)}"
+            ),
+        )
 
 
 class TestReportAndExitCode(CardDirectoryMixin, unittest.TestCase):
