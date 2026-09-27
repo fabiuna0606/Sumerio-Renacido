@@ -22,7 +22,7 @@ import validate_decisions as validator  # noqa: E402
 
 DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
-EXPECTED_CARD_COUNT = 13
+EXPECTED_CARD_COUNT = 15
 
 EPSD2_SOURCE = (
     "ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27"

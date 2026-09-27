@@ -130,7 +130,18 @@ en `tests/`**. Ejecuta:
 python3 -m unittest discover -s tests -v
 ```
 
-## 8. Cierre de sesión
+## 8. Ramas e integración continua
+
+- **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
+  defecto**. Cada sesión trabaja en **su propia rama** y entra a `main` **solo
+  mediante un PR que Fabián fusiona**.
+- **Integración continua (TEC-004):** **ningún PR se fusiona con la CI en
+  rojo.** El workflow `.github/workflows/ci.yml` ejecuta
+  `python3 scripts/validate_decisions.py` y
+  `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
+  externas, en cada push y en cada PR.
+
+## 9. Cierre de sesión
 
 Al cerrar cada sesión, informa:
 
