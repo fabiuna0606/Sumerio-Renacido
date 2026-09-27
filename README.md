@@ -107,3 +107,21 @@ python3 scripts/validate_decisions.py
 El validador termina con código de salida `0` si todas las fichas de
 `decisiones/` son válidas y `1` si encuentra algún error. Acepta como
 argumento opcional un directorio distinto de `decisiones/`.
+
+## Licencias y atribución
+
+- **Código** (`scripts/`, `tests/`) — licencia MIT, en `LICENSE`, con titular
+  Fabián y año 2026.
+- **Contenido** (estándar, fichas de `decisiones/`, léxico y documentación) —
+  CC BY-SA 4.0, en `LICENSE-CONTENT`:
+  <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+Materiales de terceros incorporados al proyecto:
+
+- Los datos de **Oracc** y del **ePSD2** están bajo **CC BY-SA 3.0**: exigen
+  **atribución** y **compartir igual**.
+- El material derivado del **ETCSL** está bajo **CC BY-NC-SA 3.0**: debe
+  **marcarse en su procedencia** y **no puede usarse en materiales de pago**.
+
+Las licencias se eligieron **sin asesoría legal**; queda anotado en
+`decisiones/PENDIENTES.md`.
