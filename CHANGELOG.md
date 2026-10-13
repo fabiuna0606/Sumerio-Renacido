@@ -28,6 +28,8 @@ de ninguna ficha ya existente.
 - `CLAUDE.md` recoge las dos reglas en la sección 8, «Ramas e integración
   continua»; el cierre de sesión pasa a ser la sección 9.
 - Las pruebas esperan ahora 15 fichas en `decisiones/`.
+- `README.md` completa la lista de archivos de la raíz: añade `LICENSE`,
+  `LICENSE-CONTENT` y la carpeta `.github/workflows/`.
 
 ## v0.2.0-borrador
 

@@ -33,7 +33,9 @@ repositorio y sus herramientas solo las **registran y verifican**.
 | `tests/` | Pruebas con `unittest`. |
 
 Archivos en la raíz: `CLAUDE.md` (instrucciones permanentes para las sesiones
-de trabajo), `CHANGELOG.md` (versiones del estándar) y `.editorconfig`.
+de trabajo), `CHANGELOG.md` (versiones del estándar), `LICENSE` (licencia del
+código), `LICENSE-CONTENT` (licencia del contenido) y `.editorconfig`. En
+`.github/workflows/` está la integración continua.
 
 ## Etiquetas de procedencia
 
