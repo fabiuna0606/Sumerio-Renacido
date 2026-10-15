@@ -15,7 +15,8 @@ import unicodedata
 import unittest
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+from repository_files import PROJECT_ROOT, repository_files
+
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 import validate_decisions as validator  # noqa: E402
@@ -40,9 +41,6 @@ DISCARDED_LETTER_DECOMPOSED = "g\u0302"
 # Única ruta del repositorio que puede mencionarla: la ficha que describe la
 # opción descartada.
 DISCARDED_LETTER_EXEMPT_FILES = frozenset({"decisiones/ORT-001.md"})
-
-# Directorios que no forman parte del texto del repositorio.
-IGNORED_DIRECTORIES = frozenset({".git", "__pycache__"})
 
 VALID_CARD = {
     "id": "TEC-900",
@@ -347,18 +345,6 @@ class TestDiscardedLetter(unittest.TestCase):
     descartada.
     """
 
-    def repository_files(self) -> list[tuple[Path, str]]:
-        """Archivos del repositorio, con su ruta relativa en formato POSIX."""
-        files = []
-        for path in sorted(PROJECT_ROOT.rglob("*")):
-            if not path.is_file():
-                continue
-            relative = path.relative_to(PROJECT_ROOT)
-            if IGNORED_DIRECTORIES.intersection(relative.parts):
-                continue
-            files.append((path, relative.as_posix()))
-        return files
-
     def test_exempt_file_exists(self) -> None:
         for name in sorted(DISCARDED_LETTER_EXEMPT_FILES):
             with self.subTest(archivo=name):
@@ -369,7 +355,7 @@ class TestDiscardedLetter(unittest.TestCase):
 
     def test_discarded_letter_only_in_the_exempt_file(self) -> None:
         offenders = []
-        for path, relative in self.repository_files():
+        for path, relative in repository_files():
             if relative in DISCARDED_LETTER_EXEMPT_FILES:
                 continue
             try:
