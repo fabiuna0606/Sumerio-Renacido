@@ -31,6 +31,33 @@ de ninguna ficha ya existente.
 - `README.md` completa la lista de archivos de la raíz: añade `LICENSE`,
   `LICENSE-CONTENT` y la carpeta `.github/workflows/`.
 
+### Comprobaciones automáticas
+
+Las reglas de `CLAUDE.md` que hasta ahora solo estaban escritas pasan a
+comprobarse solas, en `tests/test_repository_rules.py`:
+
+- **Regla 1** — la cadena `FUENTE POR VERIFICAR` se escribe exactamente así,
+  sin variantes de mayúsculas, en todo el repositorio.
+- **Regla 4** — el código de `scripts/` y `tests/` solo importa la biblioteca
+  estándar, comprobado sobre el árbol sintáctico de cada archivo.
+- **Regla 5** — todos los archivos del repositorio van en UTF-8, en NFC, con
+  fin de línea LF, con salto de línea final y sin espacios al final de las
+  líneas.
+- **TEC-004** — el workflow ejecuta de verdad el validador y las pruebas con
+  Python 3.11, y se dispara en push, en pull request y por calendario.
+- Coherencia: toda ficha citada en la documentación existe en `decisiones/`.
+
+Y la propia automatización se amplía:
+
+- `.github/workflows/ci.yml` añade dos disparadores, `schedule` (los lunes) y
+  `workflow_dispatch`, y un job nuevo que hace cumplir la **TEC-003**: un pull
+  request que no apunte a `main` falla.
+- `.claude/hooks/session-start.sh`, registrado en `.claude/settings.json`,
+  comprueba al arrancar cada sesión que el intérprete cumple la regla 4 y que
+  el validador y las pruebas pasan. Informa sin bloquear la sesión.
+- `tests/repository_files.py` reúne el recorrido de los archivos del
+  repositorio, que antes estaba duplicado en las pruebas.
+
 ## v0.2.0-borrador
 
 Resolución de los pendientes de la sesión 1. Ninguna ficha cambia de estado:

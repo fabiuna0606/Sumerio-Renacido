@@ -130,6 +130,16 @@ en `tests/`**. Ejecuta:
 python3 -m unittest discover -s tests -v
 ```
 
+Las reglas **1, 4 y 5** de la sección 1 **se comprueban solas** en
+`tests/test_repository_rules.py`: la cadena `FUENTE POR VERIFICAR` escrita
+exactamente así, el uso de solo la biblioteca estándar, y UTF-8 con NFC y fin
+de línea LF en todos los archivos. No hace falta revisarlas a mano, pero
+tampoco se pueden incumplir: las pruebas fallan.
+
+El hook `.claude/hooks/session-start.sh`, registrado en
+`.claude/settings.json`, ejecuta el validador y las pruebas al arrancar cada
+sesión e informa del resultado.
+
 ## 8. Ramas e integración continua
 
 - **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
@@ -139,7 +149,8 @@ python3 -m unittest discover -s tests -v
   rojo.** El workflow `.github/workflows/ci.yml` ejecuta
   `python3 scripts/validate_decisions.py` y
   `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
-  externas, en cada push y en cada PR.
+  externas, en cada push, en cada PR, una vez por semana y a petición. Un job
+  aparte hace cumplir la TEC-003: un PR que no apunte a `main` falla.
 
 ## 9. Cierre de sesión
 

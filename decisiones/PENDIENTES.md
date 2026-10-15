@@ -32,6 +32,20 @@ pierdan. Las entradas que Fabián ya resolvió se conservan marcadas como
    las condiciones de Oracc, del ePSD2 y del ETCSL han pasado por revisión
    jurídica.
 
+6. **¿Se automatiza la fusión a `main`?** Fabián pidió automatizar todo y
+   no depender de él. Todas las comprobaciones del proyecto están ya
+   automatizadas, pero la **TEC-003** reserva la fusión a Fabián, y la regla 2
+   de `CLAUDE.md` impide resolver esa tensión sin él. Queda registrada sin
+   resolver, con las dos vías posibles y ninguna elegida: activar la fusión
+   automática de GitHub para los PR que lleguen en verde, o cambiar la
+   TEC-003. Mientras la ficha diga lo que dice, la fusión es el único paso
+   manual que queda.
+
+   De esa misma fusión dependen dos cosas más: que `main` reciba el contenido
+   del estándar, y que arranque la ejecución semanal de la integración
+   continua, porque GitHub solo lanza los disparadores `schedule` desde la
+   rama por defecto del repositorio.
+
 ## Inconsistencias detectadas
 
 Registradas sin resolver, conforme a la regla 2 de `CLAUDE.md`. Las que Fabián
