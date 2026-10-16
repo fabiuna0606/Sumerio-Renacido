@@ -1,4 +1,4 @@
-# sumerio renacido (eme-ĝir gibil)
+# sumerio renacido (emegir gibil)
 
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
 **documentado y auditable**, con un perfil **equilibrado** entre fidelidad
@@ -33,7 +33,9 @@ repositorio y sus herramientas solo las **registran y verifican**.
 | `tests/` | Pruebas con `unittest`. |
 
 Archivos en la raíz: `CLAUDE.md` (instrucciones permanentes para las sesiones
-de trabajo), `CHANGELOG.md` (versiones del estándar) y `.editorconfig`.
+de trabajo), `CHANGELOG.md` (versiones del estándar), `LICENSE` (licencia del
+código), `LICENSE-CONTENT` (licencia del contenido) y `.editorconfig`. En
+`.github/workflows/` está la integración continua.
 
 ## Etiquetas de procedencia
 
@@ -77,11 +79,18 @@ Puntaje = E − C + FL
 
 donde `E` es la evidencia (0–3), `C` el costo de aprendizaje para un
 hispanohablante (0–3) y `FL` la carga funcional (0 o 1). Un rasgo se incluye
-**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Cuando ninguna opción
-alcanza `E ≥ 2`, la ficha es de tipo `convencion`: se adopta la convención
-académica y no se puntúa. Las escalas son **ordinales**: el puntaje es una
-regla de decisión explícita, no una medida exacta. El detalle de las escalas
-está en `CLAUDE.md`.
+**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Las escalas son
+**ordinales**: el puntaje es una regla de decisión explícita, no una medida
+exacta. El detalle de las escalas está en `CLAUDE.md`.
+
+## Tipos de ficha
+
+- **`puntuada`** — decisión **binaria** sobre incluir o no un rasgo. **Siempre
+  se puntúa**, aunque `E < 2`: un `E` bajo lleva a **excluir** por la propia
+  fórmula, y no convierte la ficha en otro tipo.
+- **`convencion`** — **elección entre formas alternativas** (por ejemplo, la
+  posición del acento o la letra que se usa) cuando **ninguna alcanza
+  `E ≥ 2`**. Se adopta la convención académica y **no se puntúa**.
 
 ## Cómo ejecutar las pruebas
 
@@ -100,3 +109,21 @@ python3 scripts/validate_decisions.py
 El validador termina con código de salida `0` si todas las fichas de
 `decisiones/` son válidas y `1` si encuentra algún error. Acepta como
 argumento opcional un directorio distinto de `decisiones/`.
+
+## Licencias y atribución
+
+- **Código** (`scripts/`, `tests/`) — licencia MIT, en `LICENSE`, con titular
+  Fabián y año 2026.
+- **Contenido** (estándar, fichas de `decisiones/`, léxico y documentación) —
+  CC BY-SA 4.0, en `LICENSE-CONTENT`:
+  <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+Materiales de terceros incorporados al proyecto:
+
+- Los datos de **Oracc** y del **ePSD2** están bajo **CC BY-SA 3.0**: exigen
+  **atribución** y **compartir igual**.
+- El material derivado del **ETCSL** está bajo **CC BY-NC-SA 3.0**: debe
+  **marcarse en su procedencia** y **no puede usarse en materiales de pago**.
+
+Las licencias se eligieron **sin asesoría legal**; queda anotado en
+`decisiones/PENDIENTES.md`.

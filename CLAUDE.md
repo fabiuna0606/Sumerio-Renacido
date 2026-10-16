@@ -1,7 +1,7 @@
 # CLAUDE.md — instrucciones permanentes del proyecto
 
 Este archivo gobierna todas las sesiones de trabajo en el repositorio
-**sumerio renacido** (eme-ĝir gibil). Léelo completo antes de modificar nada.
+**sumerio renacido** (emegir gibil). Léelo completo antes de modificar nada.
 
 El proyecto busca revivir el sumerio como lengua hablada mediante un estándar
 documentado y auditable, con un perfil **equilibrado** entre fidelidad
@@ -38,11 +38,17 @@ Puntaje = E − C + FL
 
 Un rasgo **se incluye si y solo si Puntaje > 0**; un puntaje de **0 excluye**.
 
-Si **ninguna opción alcanza E ≥ 2**, la ficha es de tipo `convencion`: se
-adopta la convención académica y **no se puntúa**.
-
 Las escalas son **ordinales**: el puntaje es una **regla de decisión
 explícita, no una medida exacta**.
+
+### Tipos de ficha
+
+- **`puntuada`** — decisión **binaria** sobre incluir o no un rasgo. **Siempre
+  se puntúa**, aunque `E < 2`: un `E` bajo lleva a **excluir** por la propia
+  fórmula, y no convierte la ficha en otro tipo.
+- **`convencion`** — **elección entre formas alternativas** (por ejemplo, la
+  posición del acento o la letra que se usa) cuando **ninguna alcanza
+  `E ≥ 2`**. Se adopta la convención académica y **no se puntúa**.
 
 ### E — evidencia
 
@@ -84,10 +90,15 @@ Se usa **el primer nivel que ofrezca solución**:
 - **Jagersma, A Descriptive Grammar of Sumerian (2010)** — gramática
   normativa del proyecto.
 - Zólyomi, *An Introduction to the Grammar of Sumerian* (2017).
-- Foxvog, *Introduction to Sumerian Grammar*.
-- ePSD2.
-- Oracc.
-- ETCSL.
+- Foxvog, *Introduction to Sumerian Grammar*. Año y edición: FUENTE POR
+  VERIFICAR.
+- ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27.
+- Oracc. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+- ETCSL. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+
+Las referencias digitales se citan con su versión y su fecha de consulta
+cuando se conocen; mientras no se conozcan, se escribe `FUENTE POR VERIFICAR`
+en su lugar.
 
 No cites páginas, secciones ni pasajes concretos de estas obras sin que
 Fabián los haya verificado; mientras no lo estén, usa `FUENTE POR VERIFICAR`.
@@ -119,7 +130,29 @@ en `tests/`**. Ejecuta:
 python3 -m unittest discover -s tests -v
 ```
 
-## 8. Cierre de sesión
+Las reglas **1, 4 y 5** de la sección 1 **se comprueban solas** en
+`tests/test_repository_rules.py`: la cadena `FUENTE POR VERIFICAR` escrita
+exactamente así, el uso de solo la biblioteca estándar, y UTF-8 con NFC y fin
+de línea LF en todos los archivos. No hace falta revisarlas a mano, pero
+tampoco se pueden incumplir: las pruebas fallan.
+
+El hook `.claude/hooks/session-start.sh`, registrado en
+`.claude/settings.json`, ejecuta el validador y las pruebas al arrancar cada
+sesión e informa del resultado.
+
+## 8. Ramas e integración continua
+
+- **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
+  defecto**. Cada sesión trabaja en **su propia rama** y entra a `main` **solo
+  mediante un PR que Fabián fusiona**.
+- **Integración continua (TEC-004):** **ningún PR se fusiona con la CI en
+  rojo.** El workflow `.github/workflows/ci.yml` ejecuta
+  `python3 scripts/validate_decisions.py` y
+  `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
+  externas, en cada push, en cada PR, una vez por semana y a petición. Un job
+  aparte hace cumplir la TEC-003: un PR que no apunte a `main` falla.
+
+## 9. Cierre de sesión
 
 Al cerrar cada sesión, informa:
 

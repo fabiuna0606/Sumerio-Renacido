@@ -1,0 +1,61 @@
+# Integración continua del proyecto "sumerio renacido".
+#
+# Ejecuta el validador de fichas y las pruebas en cada push, en cada pull
+# request, una vez por semana y a petición. Solo biblioteca estándar de
+# Python 3.11: no instala dependencias.
+#
+# La ejecución semanal detecta la deriva del entorno —una imagen de runner
+# nueva, un Python retirado del caché de herramientas— sin que nadie tenga
+# que empujar nada. GitHub solo lanza los disparadores "schedule" desde la
+# rama por defecto del repositorio, así que empieza a correr cuando este
+# archivo está en ella.
+name: Validador y pruebas
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '37 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-test:
+    name: Validador de fichas y pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v7
+
+      - name: Preparar Python 3.11
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Mostrar la versión de Python
+        run: python3 --version
+
+      - name: Validar las fichas de decisión
+        run: python3 scripts/validate_decisions.py
+
+      - name: Ejecutar las pruebas
+        run: python3 -m unittest discover -s tests -v
+
+  branch-strategy:
+    name: La rama de destino es main (TEC-003)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      # El nombre de la rama lo elige quien abre el PR, así que se pasa por
+      # variable de entorno y no se interpola en el script.
+      - name: Comprobar la rama de destino
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          if [ "$BASE_REF" != "main" ]; then
+            echo "TEC-003: un pull request entra a main; este apunta a '$BASE_REF'."
+            exit 1
+          fi
+          echo "La rama de destino es main."
