@@ -17,7 +17,8 @@ id = "XXX-000"
 # Título breve del asunto que resuelve la ficha.
 titulo = ""
 
-# Área. Solo uno de: "fonologia", "ortografia", "gramatica", "lexico", "tecnica".
+# Área. Solo uno de: "fundamentos", "fonologia", "ortografia", "gramatica",
+# "lexico", "tecnica".
 area = ""
 
 # Tipo de ficha. Solo uno de: "evidencia", "convencion", "puntuada".

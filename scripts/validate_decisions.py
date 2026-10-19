@@ -59,7 +59,14 @@ REQUIRED_FIELDS = (
 
 SCORE_FIELDS = ("E", "C", "FL", "puntaje", "incluye")
 
-ALLOWED_AREAS = ("fonologia", "ortografia", "gramatica", "lexico", "tecnica")
+ALLOWED_AREAS = (
+    "fundamentos",
+    "fonologia",
+    "ortografia",
+    "gramatica",
+    "lexico",
+    "tecnica",
+)
 ALLOWED_TYPES = ("evidencia", "convencion", "puntuada")
 ALLOWED_STATES = (
     "propuesta",
