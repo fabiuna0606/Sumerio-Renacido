@@ -55,3 +55,18 @@ Registradas sin resolver, conforme a la regla 2 de `CLAUDE.md`.
    *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
    de ePSD2, Oracc y ETCSL no se ha registrado versión ni fecha de consulta.
    FUENTE POR VERIFICAR.
+
+## Inconsistencias con la Carta Fundacional (detectadas el 19-10-2026)
+
+Entre el 17 y el 19-10-2026, Fabián aprobó en conversación una Carta Fundacional (Claude Docs, privada). Algunas de sus decisiones contradicen fichas de este repositorio. Se registran **sin resolver**: decide Fabián.
+
+| Ficha del repositorio | Lo que dice | Lo que aprobó Fabián en la Carta |
+|---|---|---|
+| ORT-001 | Usar la misma letra que el ePSD2 (regla de coordinación) | ESC-001: escribir **ĝ**, aunque el ePSD2 y Oracc usan ŋ |
+| FON-003 | Admite la pronunciación sonora tradicional de *b d g* en los niveles iniciales | FON v1: *b d g* = [p t k] sin aspiración, sin excepción por nivel |
+| FON-007 | Excluye /ř/ y usa la forma del lema en el ePSD2 | FON v1: en el neosumerio estándar, ř pasa a [ɾ] |
+| FON-009 | Excluye las vocales largas | FON v1: 8 vocales, a e i u breves y largas |
+| FON-010 | Acento en la sílaba de la raíz | FON v1: acento en la última sílaba |
+| `CLAUDE.md` §2 y §3 | Regla `E − C + FL` y jerarquía de evidencia por épocas | Q(w) y jerarquía de fuentes A–E (textos primarios > gramáticas > artículos > ePSD2/Oracc > Wikipedia/IA) |
+
+Sobre la pregunta abierta 3 de este archivo: según la Carta, el ePSD2 escribe `ŋ`. FUENTE POR VERIFICAR por Fabián.
