@@ -10,7 +10,9 @@ PLANTILLA.md y PENDIENTES.md):
 * que el id es único y coincide con el nombre del archivo;
 * en fichas puntuadas: E y C entre 0 y 3, FL igual a 0 o 1,
   puntaje = E - C + FL e incluye = (puntaje > 0);
-* en fichas de convención: que no haya campos de puntaje;
+* en fichas de convención y de evidencia: que no haya campos de puntaje;
+* en fichas de evidencia, y en toda ficha verificada o adoptada: que haya
+  al menos una fuente real (distinta de "FUENTE POR VERIFICAR");
 * que reemplazada_por apunte a un id existente si estado = "reemplazada",
   y esté vacío en cualquier otro caso;
 * que todo el texto del archivo esté en NFC.
@@ -58,7 +60,7 @@ REQUIRED_FIELDS = (
 SCORE_FIELDS = ("E", "C", "FL", "puntaje", "incluye")
 
 ALLOWED_AREAS = ("fonologia", "ortografia", "gramatica", "lexico", "tecnica")
-ALLOWED_TYPES = ("puntuada", "convencion")
+ALLOWED_TYPES = ("evidencia", "convencion", "puntuada")
 ALLOWED_STATES = (
     "propuesta",
     "verificada",
@@ -83,6 +85,9 @@ LIST_FIELDS = ("opciones", "fuentes")
 REPLACED_STATE = "reemplazada"
 SCORED_TYPE = "puntuada"
 CONVENTION_TYPE = "convencion"
+EVIDENCE_TYPE = "evidencia"
+UNSCORED_TYPES = (CONVENTION_TYPE, EVIDENCE_TYPE)
+SOURCED_STATES = ("verificada", "adoptada")
 
 UNVERIFIED_SOURCE = "FUENTE POR VERIFICAR"
 
@@ -231,11 +236,12 @@ def check_scores(metadata: dict) -> list[str]:
     errors: list[str] = []
     card_type = metadata.get("tipo")
 
-    if card_type == CONVENTION_TYPE:
+    if card_type in UNSCORED_TYPES:
+        label = "convención" if card_type == CONVENTION_TYPE else "evidencia"
         for field in SCORE_FIELDS:
             if field in metadata:
                 errors.append(
-                    f"una ficha de convención no puede llevar el campo de "
+                    f"una ficha de {label} no puede llevar el campo de "
                     f"puntaje {field}"
                 )
         return errors
@@ -284,6 +290,38 @@ def check_scores(metadata: dict) -> list[str]:
             f"puntaje = {expected_score} exige "
             f"{str(expected_inclusion).lower()} (se incluye si y solo si "
             f"puntaje > 0)"
+        )
+    return errors
+
+
+def check_sources(metadata: dict) -> list[str]:
+    """Fuentes reales donde la ficha las exige.
+
+    Una ficha de evidencia se decide por las fuentes, así que necesita al
+    menos una. Una ficha verificada o adoptada también: lo que está por
+    cotejar nunca se presenta como firme.
+    """
+    sources = metadata.get("fuentes")
+    if not isinstance(sources, list) or not all(
+        isinstance(item, str) for item in sources
+    ):
+        return []
+    has_real_source = any(
+        item.strip() and item.strip() != UNVERIFIED_SOURCE for item in sources
+    )
+    if has_real_source:
+        return []
+    errors: list[str] = []
+    if metadata.get("tipo") == EVIDENCE_TYPE:
+        errors.append(
+            "una ficha de evidencia necesita al menos una fuente real "
+            f"(distinta de {UNVERIFIED_SOURCE!r})"
+        )
+    state = metadata.get("estado")
+    if state in SOURCED_STATES:
+        errors.append(
+            f"una ficha en estado {state!r} necesita al menos una fuente real "
+            f"(distinta de {UNVERIFIED_SOURCE!r})"
         )
     return errors
 
@@ -353,6 +391,7 @@ def validate_directory(directory: Path) -> dict[str, list[str]]:
         errors += check_allowed_values(metadata)
         errors += check_identifier(metadata, path)
         errors += check_scores(metadata)
+        errors += check_sources(metadata)
         errors += check_replacement(metadata, known_ids)
 
         card_id = metadata.get("id")

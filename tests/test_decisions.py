@@ -22,7 +22,7 @@ import validate_decisions as validator  # noqa: E402
 
 DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
-EXPECTED_CARD_COUNT = 13
+EXPECTED_CARD_COUNT = 18
 
 VALID_CARD = {
     "id": "TEC-900",
@@ -55,6 +55,21 @@ CONVENTION_CARD = {
     "estado": "propuesta",
     "verificacion": "PENDIENTE: ficha sintética usada solo en las pruebas",
     "fuentes": ["FUENTE POR VERIFICAR"],
+    "se_revisa_si": "Cambia el formato de las fichas.",
+    "reemplazada_por": "",
+}
+
+EVIDENCE_CARD = {
+    "id": "TEC-902",
+    "titulo": "Ficha de evidencia de prueba",
+    "area": "tecnica",
+    "tipo": "evidencia",
+    "pregunta": "¿Es válida esta ficha de evidencia de prueba?",
+    "opciones": ["Opción A", "Opción B"],
+    "decision": "Opción A.",
+    "estado": "verificada",
+    "verificacion": "Ficha sintética usada solo en las pruebas",
+    "fuentes": ["Fuente sintética de prueba, p. 1"],
     "se_revisa_si": "Cambia el formato de las fichas.",
     "reemplazada_por": "",
 }
@@ -138,13 +153,26 @@ class TestRealCards(unittest.TestCase):
                 text = path.read_text(encoding="utf-8")
                 self.assertTrue(unicodedata.is_normalized("NFC", text))
 
-    def test_real_cards_are_proposals_pending_verification(self) -> None:
+    def test_real_cards_with_firm_state_have_real_sources(self) -> None:
         for path in validator.card_paths(DECISIONS_DIR):
+            metadata, _ = validator.load_card(path)
+            if metadata["estado"] not in validator.SOURCED_STATES:
+                continue
             with self.subTest(ficha=path.name):
-                metadata, _ = validator.load_card(path)
-                self.assertEqual(metadata["estado"], "propuesta")
-                self.assertEqual(metadata["fuentes"],
-                                 [validator.UNVERIFIED_SOURCE])
+                self.assertTrue(
+                    any(source != validator.UNVERIFIED_SOURCE
+                        for source in metadata["fuentes"])
+                )
+
+    def test_no_real_card_uses_learning_cost_to_decide(self) -> None:
+        """Capa 0 (fidelidad fonética): las fichas vigentes no se puntúan
+        con el costo de aprendizaje; solo pueden hacerlo las reemplazadas."""
+        for path in validator.card_paths(DECISIONS_DIR):
+            metadata, _ = validator.load_card(path)
+            with self.subTest(ficha=path.name):
+                if metadata["tipo"] == validator.SCORED_TYPE:
+                    self.assertEqual(metadata["estado"],
+                                     validator.REPLACED_STATE)
 
 
 class TestValidCards(CardDirectoryMixin, unittest.TestCase):
@@ -156,6 +184,10 @@ class TestValidCards(CardDirectoryMixin, unittest.TestCase):
 
     def test_convention_card_passes(self) -> None:
         self.write_card(CONVENTION_CARD)
+        self.assertEqual(validator.validate_directory(self.directory), {})
+
+    def test_evidence_card_passes(self) -> None:
+        self.write_card(EVIDENCE_CARD)
         self.assertEqual(validator.validate_directory(self.directory), {})
 
     def test_zero_score_excludes(self) -> None:
@@ -273,6 +305,22 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
             "TEC-901.md",
             "una ficha de convención no puede llevar el campo de puntaje",
         )
+
+    def test_score_fields_in_evidence_card_are_detected(self) -> None:
+        card = dict(EVIDENCE_CARD, E=3, C=0, FL=1, puntaje=4, incluye=True)
+        self.write_card(card)
+        self.assertErrorMentions("TEC-902.md", "ficha de evidencia no puede")
+
+    def test_evidence_card_without_real_source_is_detected(self) -> None:
+        card = dict(EVIDENCE_CARD, estado="propuesta",
+                    fuentes=[validator.UNVERIFIED_SOURCE])
+        self.write_card(card)
+        self.assertErrorMentions("TEC-902.md", "necesita al menos una fuente")
+
+    def test_adopted_card_without_real_source_is_detected(self) -> None:
+        card = dict(CONVENTION_CARD, estado="adoptada")
+        self.write_card(card)
+        self.assertErrorMentions("TEC-901.md", "estado 'adoptada' necesita")
 
     def test_replacement_pointing_to_unknown_id_is_detected(self) -> None:
         self.write_card(dict(VALID_CARD, estado="reemplazada",
