@@ -2,71 +2,74 @@
 
 Preguntas abiertas e inconsistencias detectadas. **Aquí no se resuelve nada**:
 las decisiones las toma Fabián. Este archivo solo las registra para que no se
-pierdan.
+pierdan. Lo resuelto no se borra: pasa a la sección final, con la fecha y la
+ficha que lo resolvió.
 
 ## Preguntas abiertas
 
 1. **Licencia del proyecto.** No está decidida. Hasta que lo esté, el
-   repositorio no declara condiciones de uso ni de redistribución.
+   repositorio no declara condiciones de uso ni de redistribución. La Carta
+   prevé una licencia abierta que obligue a citar para la norma y el
+   diccionario, y una licencia de software libre para el código.
 2. **Licencias de Oracc y del ePSD2 para datos derivados.** Hay que comprobar
    qué permiten exactamente ambos proyectos respecto de obras derivadas antes
    de incorporar material suyo al léxico o al corpus. FUENTE POR VERIFICAR.
-3. **Qué letra usa el ePSD2 (ORT-001).** La ficha ORT-001 decide usar la misma
-   letra que el ePSD2 como regla de coordinación, pero falta comprobar si el
-   ePSD2 escribe `ĝ` o `ŋ`. Mientras no se compruebe, la decisión está tomada
-   pero su contenido concreto es desconocido.
+3. **Adopción de la fonología.** FON-001, FON-002, FON-004, FON-005, FON-006,
+   FON-008 y FON-011 a FON-014 están en estado `verificada`: sus páginas de
+   Jagersma (2010) están cotejadas. Falta que Fabián las pase a `adoptada`.
+4. **Segunda fuente para las capas 0 a 3.** La Carta exige dos fuentes
+   independientes de rango B o C para dar por firme un rasgo de estas capas.
+   Las fichas de fonología solo tienen cotejado a Jagersma. Zólyomi (2017:
+   28) está citado en la Carta para FON-011, pero sin cotejar contra el libro.
+5. **Decisiones aprobadas en la Carta que aún no tienen ficha aquí:**
+   - Capa 1: período base, corpus, jerarquía de evidencia y Jagersma como
+     obra de referencia principal.
+   - ESC-002: fuente Noto Sans Cuneiform, con glifos de estilo Ur III.
+   - LEX-001: los préstamos acadios antiguos se reemplazan solo si hay un
+     equivalente sumerio nativo atestiguado; si no, se marcan
+     `[ANTIGUO-PRÉSTAMO]`.
+   - LEX-002: el vocabulario religioso es solo para lectura; norma neutral y
+     variante `[TRADICIONAL]` opcional.
 
-## Inconsistencias detectadas
+   En la Carta siguen pendientes, además, LEX-003 (vocabulario monoteísta) y
+   la ficha de «computadora».
 
-Registradas sin resolver, conforme a la regla 2 de `CLAUDE.md`.
+## Inconsistencias abiertas
 
-1. **Fichas puntuadas con E < 2.** La regla de decisión dice que si ninguna
-   opción alcanza `E ≥ 2`, la ficha es de tipo `convencion` y no se puntúa.
-   Cuatro fichas iniciales llevan `tipo = "puntuada"` con `E < 2`:
-
-   | Ficha | E | Puntaje | Resultado |
-   |-------|---|---------|-----------|
-   | FON-002 (vocal o) | 0 | 0 | excluir |
-   | FON-007 (posible fonema /ř/) | 1 | −1 | excluir |
-   | FON-008 (tonos) | 1 | −1 | excluir |
-   | FON-009 (vocales largas) | 1 | 0 | excluir |
-
-   Se han registrado como puntuadas, tal como se entregaron. Queda por decidir
-   si la regla del tipo `convencion` se aplica solo a las fichas que deben
-   fijar una forma positiva, o también a las que excluyen un rasgo.
-
-2. **`E` se registra por ficha, no por opción.** La regla habla de que
-   *ninguna opción* alcance `E ≥ 2`, pero el formato de ficha guarda un único
-   valor de `E`, sin desglose por opción. Si se quiere puntuar cada opción por
-   separado, hay que cambiar el formato.
-
-3. **El texto de `verificacion` menciona puntajes en fichas sin puntaje.** Las
-   trece fichas iniciales llevan
-   `verificacion = "PENDIENTE: puntajes provisionales, comprobar en Jagersma y Zólyomi"`,
-   incluidas las cuatro de convención (FON-010, ORT-001, TEC-001 y TEC-002),
-   que por definición no tienen puntajes. Se ha copiado tal cual.
-
-4. **ORT-001 sigue abierta y el repositorio ya escribe `ĝ`.** La
-   documentación, el nombre del proyecto (eme-ĝir gibil) y la ficha FON-004
-   usan `ĝ` antes de que ORT-001 esté verificada. Si el ePSD2 usara `ŋ`,
-   habría que reescribir esos textos.
-
-5. **Referencias del proyecto sin datos bibliográficos completos.** De Foxvog,
+1. **El campo `verificacion` de TEC-001 y TEC-002** dice
+   `"PENDIENTE: puntajes provisionales, comprobar en Jagersma y Zólyomi"`.
+   Son fichas de convención técnica: ni llevan puntajes ni dependen de esas
+   obras.
+2. **Referencias sin datos bibliográficos completos.** De Foxvog,
    *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
    de ePSD2, Oracc y ETCSL no se ha registrado versión ni fecha de consulta.
    FUENTE POR VERIFICAR.
 
-## Inconsistencias con la Carta Fundacional (detectadas el 19-10-2026)
+## Resuelto
 
-Entre el 17 y el 19-10-2026, Fabián aprobó en conversación una Carta Fundacional (Claude Docs, privada). Algunas de sus decisiones contradicen fichas de este repositorio. Se registran **sin resolver**: decide Fabián.
+### 19-10-2026: el repositorio se alinea con la Carta Fundacional
 
-| Ficha del repositorio | Lo que dice | Lo que aprobó Fabián en la Carta |
+Decisión de Fabián: donde el repositorio y la Carta discrepan, **prevalece lo
+verificado en la Carta**.
+
+| Discrepancia | Antes | Resolución |
 |---|---|---|
-| ORT-001 | Usar la misma letra que el ePSD2 (regla de coordinación) | ESC-001: escribir **ĝ**, aunque el ePSD2 y Oracc usan ŋ |
-| FON-003 | Admite la pronunciación sonora tradicional de *b d g* en los niveles iniciales | FON v1: *b d g* = [p t k] sin aspiración, sin excepción por nivel |
-| FON-007 | Excluye /ř/ y usa la forma del lema en el ePSD2 | FON v1: en el neosumerio estándar, ř pasa a [ɾ] |
-| FON-009 | Excluye las vocales largas | FON v1: 8 vocales, a e i u breves y largas |
-| FON-010 | Acento en la sílaba de la raíz | FON v1: acento en la última sílaba |
-| `CLAUDE.md` §2 y §3 | Regla `E − C + FL` y jerarquía de evidencia por épocas | Q(w) y jerarquía de fuentes A–E (textos primarios > gramáticas > artículos > ePSD2/Oracc > Wikipedia/IA) |
+| ĝ o ŋ | ORT-001: usar la letra del ePSD2 | ESC-001 (adoptada): **ĝ**; al buscar en el ePSD2 se cambia por ŋ |
+| *b d g* | FON-003: se admitía la pronunciación sonora en los niveles iniciales | FON-011: [p t k] sin aspiración, sin excepción por nivel |
+| ř | FON-007: excluir y usar el lema del ePSD2 | FON-012: no es fonema; ante vocal [ɾ], a final de sílaba se pierde |
+| Vocales largas | FON-009: excluidas | FON-013: 8 vocales, a e i u breves y largas |
+| Acento | FON-010: en la raíz, sin fuente | FON-014: fijo en la última sílaba |
+| Método | `E − C + FL` y un nivel de «calco del acadio» | Fichas de tipo `evidencia` y jerarquías de la Carta (`CLAUDE.md` §2 y §3); `puntuada` queda como tipo histórico |
 
-Sobre la pregunta abierta 3 de este archivo: según la Carta, el ePSD2 escribe `ŋ`. FUENTE POR VERIFICAR por Fabián.
+Las fichas antiguas siguen en el directorio, en estado `reemplazada`.
+
+Con esto también quedan resueltas tres inconsistencias anteriores:
+
+- **Fichas puntuadas con E < 2.** Ya no queda ninguna ficha puntuada vigente.
+- **`E` registrado por ficha y no por opción.** Deja de aplicar al quedar en
+  desuso la regla de puntaje.
+- **ORT-001 seguía abierta mientras el repositorio ya escribía ĝ.** Resuelto
+  por ESC-001.
+
+La antigua pregunta 3 («¿qué letra usa el ePSD2?») queda contestada: según la
+Carta, el ePSD2 escribe ŋ (por ejemplo, saŋ).

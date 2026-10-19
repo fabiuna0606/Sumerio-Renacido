@@ -11,6 +11,35 @@ El número de versión tiene la forma `mayor.menor.parche`:
 - **Menor** — **añadidos** que no invalidan lo ya escrito.
 - **Parche** — **correcciones**.
 
+## v0.2.0-borrador (19-10-2026)
+
+El repositorio se alinea con la Carta Fundacional, por decisión de Fabián.
+
+- **Método.** El nuevo tipo de ficha `evidencia` se decide por las fuentes,
+  sin puntaje. La regla `E − C + FL` queda como histórica, porque permitía
+  excluir rasgos atestiguados por su costo de aprendizaje, contra la
+  fidelidad fonética de la capa 0. `CLAUDE.md` recoge los principios de la
+  capa 0 y las jerarquías de evidencia y de fuentes de la Carta.
+- **Fichas nuevas.**
+  - ESC-001 (adoptada): ĝ.
+  - FON-011: b/d/g sordas sin aspirar, sin excepción por nivel.
+  - FON-012: ř ya no es fonema.
+  - FON-013: 8 vocales.
+  - FON-014: acento final.
+- **Fichas reemplazadas.** ORT-001, FON-003, FON-007, FON-009 y FON-010
+  quedan en estado `reemplazada`; nada se borra.
+- **Fichas convertidas.** FON-001, FON-002, FON-004, FON-005, FON-006 y
+  FON-008 pasan a fichas de evidencia, con páginas de Jagersma (2010)
+  cotejadas. Sus decisiones no cambian.
+- **Validador.** Admite el tipo `evidencia`. Exige una fuente real en las
+  fichas de evidencia y en las verificadas o adoptadas. 47 pruebas.
+- **Etiquetas.** Nueva etiqueta de procedencia `[ANTIGUO-PRÉSTAMO]`
+  (LEX-001 de la Carta).
+- **Memoria de trabajo.** Nuevo `CONTEXTO.md`.
+
+Es un cambio de versión **menor**: ninguna ficha estaba adoptada, así que no
+se invalida ningún texto escrito en el estándar.
+
 ## v0.1.0-borrador
 
 Primera versión del andamiaje del proyecto.
