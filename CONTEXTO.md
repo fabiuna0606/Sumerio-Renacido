@@ -8,16 +8,21 @@
 >
 > **Sobre las citas:** las páginas citadas aquí las cotejó Claude contra los PDF de las obras. Conforme a `CLAUDE.md` §4, para el estándar siguen contando como `FUENTE POR VERIFICAR` hasta que Fabián las compruebe.
 >
-> Última actualización: **2026-10-19, 17:40 (UTC−6)**.
+> Última actualización: **2026-10-19, 17:46 (UTC−6)**.
 
 ---
 
-## 1. Dos fuentes de decisiones que hay que reconciliar
+## 1. Fuente de verdad
 
-1. **Este repositorio** (creado el 16-10-2026): fichas FON-001 a FON-010, ORT-001, TEC-001 y TEC-002, todas en estado `propuesta`. Regla de decisión `E − C + FL`.
-2. **La Carta Fundacional de *eme-ĝir gibil*** (Claude Docs, privada, creada del 17 al 19-10-2026): arquitectura en capas 0 a 6, con decisiones que Fabián **aprobó** en conversación. Algunas contradicen fichas de este repositorio.
+Desde el 19-10-2026, por decisión de Fabián, **donde el repositorio y la Carta Fundacional (Claude Docs, privada) discrepan, prevalece lo verificado en la Carta**. El repositorio se alineó en la versión **v0.2.0-borrador**:
 
-Las contradicciones están en `decisiones/PENDIENTES.md`, sin resolver: decide Fabián.
+- Fichas de tipo `evidencia` en lugar de la regla `E − C + FL`.
+- ESC-001 (ĝ) y FON-011 a FON-014.
+- Las fichas que se contradecían quedaron en estado `reemplazada`.
+
+El detalle está en `CHANGELOG.md` y en `decisiones/PENDIENTES.md`.
+
+**Pendiente**: que Fabián confirme si el repositorio pasa a ser la **única** fuente de verdad, con todas las decisiones de la Carta migradas como fichas.
 
 ## 2. Reglas de trabajo que pidió Fabián
 
@@ -79,7 +84,9 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
 
 ## 6. Pendientes
 
-- **Reconciliar las fichas de este repositorio con la Carta.** Ver `decisiones/PENDIENTES.md`.
+- **Adoptar la fonología.** Las fichas FON en estado `verificada` esperan la aprobación de Fabián.
+- **Segunda fuente** (Zólyomi 2017) para las capas 0 a 3.
+- **Migrar a fichas** las decisiones aprobadas en la Carta que aún no las tienen: capa 1, ESC-002, LEX-001 y LEX-002.
 - **Ficha «computadora»**: verificar *ĝiš-ḫur* y *-zu*.
 - **LEX-003**: vocabulario para «Dios único».
 - **Ficha para «y»**: *ù* es un préstamo acadio.
@@ -95,3 +102,7 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - Se propone NOM-001.
   - Se verificó *kašāru* en el CAD K.
   - Fabián propone este archivo de contexto y da permiso para usar el repositorio.
+  - Fabián decide que se resuelvan las contradicciones según la Carta. Resultado:
+    - Versión v0.2.0-borrador.
+    - 18 fichas, todas válidas.
+    - 47 pruebas, todas pasan.
