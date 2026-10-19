@@ -7,9 +7,13 @@ y lee también `CONTEXTO.md`, la memoria de trabajo del proyecto.
 El proyecto busca revivir el sumerio como lengua hablada mediante un estándar
 documentado y auditable. Lo rige la **Carta Fundacional de eme-ĝir gibil**
 (Claude Docs, privada), cuyos principios de la capa 0 están resumidos abajo.
-Cuando este repositorio y la Carta discrepen, **prevalece lo verificado en la
-Carta**; la discrepancia se registra en `decisiones/PENDIENTES.md` y se
-resuelve con una ficha. Así lo decidió Fabián el 19-10-2026.
+
+**Dirección de la sincronización (decisión de Fabián, 19-10-2026):** las
+decisiones se toman en la conversación de trabajo con Fabián y en la Carta.
+**Este repositorio es su reflejo, nunca al revés.** La secretaría técnica lo
+actualiza en cada sesión. Si algo aquí discrepa de lo decidido allí, el
+repositorio está desactualizado: se corrige con una ficha nueva y se deja
+constancia en `decisiones/PENDIENTES.md`.
 
 **Reparto de responsabilidades:** Fabián, fundador y dueño del proyecto, toma
 todas las decisiones. El asistente actúa como **secretaría técnica**: investiga,

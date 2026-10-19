@@ -14,33 +14,19 @@ ficha que lo resolvió.
 2. **Licencias de Oracc y del ePSD2 para datos derivados.** Hay que comprobar
    qué permiten exactamente ambos proyectos respecto de obras derivadas antes
    de incorporar material suyo al léxico o al corpus. FUENTE POR VERIFICAR.
-3. **Adopción de la fonología.** FON-001, FON-002, FON-004, FON-005, FON-006,
-   FON-008 y FON-011 a FON-014 están en estado `verificada`: sus páginas de
-   Jagersma (2010) están cotejadas. Falta que Fabián las pase a `adoptada`.
-4. **Segunda fuente para las capas 0 a 3.** La Carta exige dos fuentes
-   independientes de rango B o C para dar por firme un rasgo de estas capas.
-   Las fichas de fonología solo tienen cotejado a Jagersma. Zólyomi (2017:
-   28) está citado en la Carta para FON-011, pero sin cotejar contra el libro.
-5. **Decisiones aprobadas en la Carta que aún no tienen ficha aquí:**
-   - Capa 1: período base, corpus, jerarquía de evidencia y Jagersma como
-     obra de referencia principal.
-   - ESC-002: fuente Noto Sans Cuneiform, con glifos de estilo Ur III.
-   - LEX-001: los préstamos acadios antiguos se reemplazan solo si hay un
-     equivalente sumerio nativo atestiguado; si no, se marcan
-     `[ANTIGUO-PRÉSTAMO]`.
-   - LEX-002: el vocabulario religioso es solo para lectura; norma neutral y
-     variante `[TRADICIONAL]` opcional.
-
-   En la Carta siguen pendientes, además, LEX-003 (vocabulario monoteísta) y
-   la ficha de «computadora».
+3. **FON-002 (no hay /o/).** Jagersma lo sostiene, pero Zólyomi (2017: 32)
+   recoge propuestas de seis vocales y cita a Keetman con siete o nueve. Sin
+   consenso de dos fuentes, la ficha queda `verificada` y rige Jagersma
+   (FUN-002). Para cerrarla hace falta una fuente C que discuta /o/.
+4. **Páginas de Zólyomi.** Se leyeron en el PDF oficial mediante extracción
+   automática. Conviene confirmarlas en el libro.
+5. **Fichas futuras:** LEX-003 (vocabulario monoteísta) y la ficha de
+   «computadora» (candidato dub ĝiš-ḫur-zu, componentes por verificar en el
+   ePSD2).
 
 ## Inconsistencias abiertas
 
-1. **El campo `verificacion` de TEC-001 y TEC-002** dice
-   `"PENDIENTE: puntajes provisionales, comprobar en Jagersma y Zólyomi"`.
-   Son fichas de convención técnica: ni llevan puntajes ni dependen de esas
-   obras.
-2. **Referencias sin datos bibliográficos completos.** De Foxvog,
+1. **Referencias sin datos bibliográficos completos.** De Foxvog,
    *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
    de ePSD2, Oracc y ETCSL no se ha registrado versión ni fecha de consulta.
    FUENTE POR VERIFICAR.
@@ -73,3 +59,24 @@ Con esto también quedan resueltas tres inconsistencias anteriores:
 
 La antigua pregunta 3 («¿qué letra usa el ePSD2?») queda contestada: según la
 Carta, el ePSD2 escribe ŋ (por ejemplo, saŋ).
+
+### 19-10-2026 (segunda parte): adopción y migración
+
+Fabián delegó la adopción («hazlo como hemos venido trabajando y resuelve
+tú») y fijó que el repositorio refleja la conversación y la Carta, no al
+revés.
+
+- **Segunda fuente.** Se cotejó Zólyomi (2017). Coincide con Jagersma en
+  FON-001, FON-004, FON-005, FON-006, FON-008 y FON-011 a FON-014, que pasan
+  a `adoptada` con doble fuente B. FON-002 sigue `verificada` (pregunta
+  abierta 3).
+- **Decisiones migradas a fichas:**
+  - FUN-001 (período base).
+  - FUN-002 (Jagersma, obra de referencia).
+  - ESC-002 (Noto Sans Cuneiform, estilo Ur III).
+  - LEX-001 (préstamos acadios antiguos).
+  - LEX-002 (vocabulario religioso).
+  - NOM-001 (nombre del fundador).
+  - ACA-001 (paleobabilónico).
+- **TEC-001 y TEC-002.** Se corrigió su texto de verificación, que hablaba
+  de puntajes que no tienen, y pasan a `adoptada`.
