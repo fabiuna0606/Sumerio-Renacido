@@ -6,23 +6,20 @@
 >
 > **Alcance:** solo el proyecto. El repositorio es público, así que los datos personales de Fabián no se guardan aquí.
 >
-> **Sobre las citas:** las páginas citadas aquí las cotejó Claude contra los PDF de las obras. Conforme a `CLAUDE.md` §4, para el estándar siguen contando como `FUENTE POR VERIFICAR` hasta que Fabián las compruebe.
+> **Sobre las citas:** las páginas citadas aquí las cotejó Claude, como secretaría técnica, en las propias obras (`CLAUDE.md` §4). Cada ficha indica quién las cotejó y cómo.
 >
-> Última actualización: **2026-10-19, 17:46 (UTC−6)**.
+> Última actualización: **2026-10-19, 17:55 (UTC−6)**.
 
 ---
 
 ## 1. Fuente de verdad
 
-Desde el 19-10-2026, por decisión de Fabián, **donde el repositorio y la Carta Fundacional (Claude Docs, privada) discrepan, prevalece lo verificado en la Carta**. El repositorio se alineó en la versión **v0.2.0-borrador**:
+**Decisión de Fabián (19-10-2026):** las decisiones se toman en la conversación de trabajo con él y en la Carta Fundacional (Claude Docs, privada). **El repositorio es su reflejo, nunca al revés.** Claude lo actualiza en cada mensaje, sin pedir permiso para leerlo.
 
-- Fichas de tipo `evidencia` en lugar de la regla `E − C + FL`.
-- ESC-001 (ĝ) y FON-011 a FON-014.
-- Las fichas que se contradecían quedaron en estado `reemplazada`.
-
-El detalle está en `CHANGELOG.md` y en `decisiones/PENDIENTES.md`.
-
-**Pendiente**: que Fabián confirme si el repositorio pasa a ser la **única** fuente de verdad, con todas las decisiones de la Carta migradas como fichas.
+Estado actual: **v0.3.0-borrador**, la primera con decisiones adoptadas.
+- 25 fichas: 17 adoptadas, 1 verificada (FON-002) y 5 reemplazadas.
+- 49 pruebas, todas pasan.
+- Sobre las fichas de fonología, Fabián delegó: «hazlo como hemos venido trabajando y resuelve tú». Se adoptaron las que tienen doble fuente B coincidente (Jagersma 2010 y Zólyomi 2017).
 
 ## 2. Reglas de trabajo que pidió Fabián
 
@@ -39,11 +36,12 @@ El detalle está en `CHANGELOG.md` y en `decisiones/PENDIENTES.md`.
 5. **Bases irrompibles, en efecto dominó**: no construir sobre nada sin verificar, y que ninguna recomendación rompa una regla ya aprobada.
 6. **Orden**: primero el sumerio y después el acadio, con el mismo método.
 
-## 3. Decisiones aprobadas por Fabián en la Carta (19-10-2026)
+## 3. Decisiones aprobadas (cada una tiene su ficha en `decisiones/`)
 
 - **Capa 0**: nueve principios, aprobados el 18-10-2026 (edición 0.1).
 - **Obra de referencia principal**: Jagersma (2010), *A Descriptive Grammar of Sumerian*.
-- **Período estándar**: neosumerio de **Ur III** (siglo XXI a.C.).
+- **Período estándar** (FUN-001): neosumerio de **Ur III** (siglo XXI a.C.).
+- **Acadio** (ACA-001): período estándar **paleobabilónico**.
 - **ESC-001**: la nasal velar se escribe **ĝ**, aunque ePSD2 y Oracc usan ŋ.
 - **ESC-002**: fuente **Noto Sans Cuneiform**, con glifos de estilo Ur III, que coinciden con los glifos de referencia de Unicode.
 - **FON v1** (Jagersma, cap. 3):
@@ -63,7 +61,7 @@ El detalle está en `CHANGELOG.md` y en `decisiones/PENDIENTES.md`.
 - **ERR-003**: se dio ř = [tsʰ] como dato firme. En el neosumerio estándar, ř pasa a r.
 - **19-10-2026**: se recomendó una forma sumeria arcaica, del siglo XXIV, aunque el estándar es Ur III. Se corrigió.
 
-## 5. Ficha en preparación: NOM-001 (nombre personal)
+## 5. NOM-001: nombre personal (adoptada)
 
 Fabián quiere un nombre que deje implícita la restauración del conocimiento perdido a través de la mirada hacia el cielo, sin nombres divinos (LEX-002).
 
@@ -80,18 +78,17 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
 
 **Una trampa evitada:** en la forma arcaica, *an-šè* **no** significa «hacia el cielo». Son prefijos verbales que significan «hacia-él».
 
-**Estado**: propuesta. Faltan dos confirmaciones de Fabián: Ur III para la parte sumeria y paleobabilónico para la acadia (ficha ACA-001).
+**Estado**: adoptada. Fabián confirmó Ur III para la parte sumeria y paleobabilónico para la acadia el 19-10-2026.
 
 ## 6. Pendientes
 
-- **Adoptar la fonología.** Las fichas FON en estado `verificada` esperan la aprobación de Fabián.
-- **Segunda fuente** (Zólyomi 2017) para las capas 0 a 3.
-- **Migrar a fichas** las decisiones aprobadas en la Carta que aún no las tienen: capa 1, ESC-002, LEX-001 y LEX-002.
-- **Ficha «computadora»**: verificar *ĝiš-ḫur* y *-zu*.
+- **FON-002 (no hay /o/).** Sin consenso: Zólyomi recoge propuestas de más vocales. Hace falta una fuente C.
+- **Confirmar las páginas de Zólyomi** en el libro impreso. Se leyeron por extracción automática.
+- **Ficha «computadora»**: verificar *ĝiš-ḫur* y *-zu* en el ePSD2.
 - **LEX-003**: vocabulario para «Dios único».
-- **Ficha para «y»**: *ù* es un préstamo acadio.
-- **ACA-001**: período estándar del acadio. Se recomienda el paleobabilónico.
+- **Ficha para «y»**: *ù* es un préstamo acadio; cotejar en Jagersma la coordinación nativa.
 - **Clase 1 de sumerio (ergativo)**: falta el ejercicio de ordenar piezas y la pregunta «¿quién lleva la -e?».
+- **Fusionar la rama** `claude/contexto-proyecto` en la rama principal, cuando Fabián quiera.
 
 ## 7. Bitácora
 
@@ -106,3 +103,8 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
     - Versión v0.2.0-borrador.
     - 18 fichas, todas válidas.
     - 47 pruebas, todas pasan.
+  - Fabián delega la adopción y fija que el repositorio es reflejo de la conversación. Resultado:
+    - Se coteja Zólyomi (2017) como segunda fuente.
+    - Se adoptan las fichas con doble fuente.
+    - Se migran FUN-001, FUN-002, ESC-002, LEX-001, LEX-002, NOM-001 y ACA-001.
+    - Versión v0.3.0-borrador.
