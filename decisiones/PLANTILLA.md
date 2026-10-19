@@ -20,12 +20,15 @@ titulo = ""
 # Área. Solo uno de: "fonologia", "ortografia", "gramatica", "lexico", "tecnica".
 area = ""
 
-# Tipo de ficha. Solo uno de: "puntuada", "convencion".
-#   "puntuada"   → se aplica Puntaje = E − C + FL y se rellenan E, C, FL,
-#                  puntaje e incluye.
-#   "convencion" → ninguna opción alcanza E ≥ 2; se adopta la convención
-#                  académica y NO se puntúa (no incluyas los campos de
-#                  puntaje: el validador los rechaza).
+# Tipo de ficha. Solo uno de: "evidencia", "convencion", "puntuada".
+#   "evidencia"  → el rasgo se decide por las fuentes (CLAUDE.md §3).
+#                  Exige al menos una fuente real. NO se puntúa.
+#   "convencion" → ninguna evidencia decide entre las opciones; se adopta
+#                  una convención declarada como tal. NO se puntúa.
+#   "puntuada"   → HISTÓRICO (E − C + FL, en desuso desde el 19-10-2026).
+#                  No lo uses en fichas nuevas.
+# En "evidencia" y "convencion" no incluyas los campos de puntaje: el
+# validador los rechaza.
 tipo = ""
 
 # La pregunta que la ficha responde, formulada de modo que admita respuesta.
@@ -55,9 +58,9 @@ se_revisa_si = ""
 # que sustituye a esta, que debe existir en decisiones/.
 reemplazada_por = ""
 
-# CAMPOS SOLO EN FICHAS PUNTUADAS (tipo = "puntuada")
+# CAMPOS SOLO EN FICHAS PUNTUADAS (tipo = "puntuada", HISTÓRICO)
 # -----------------------------------------------------------------------
-# Elimina las cinco líneas siguientes si tipo = "convencion".
+# Elimina las cinco líneas siguientes en toda ficha nueva.
 
 # E — evidencia, de 0 a 3:
 #   0 ninguna | 1 propuesta de un solo investigador

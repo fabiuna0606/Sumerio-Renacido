@@ -1,8 +1,10 @@
 # sumerio renacido (eme-ĝir gibil)
 
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
-**documentado y auditable**, con un perfil **equilibrado** entre fidelidad
-histórica y facilidad de aprendizaje.
+**documentado y auditable**, regido por la **Carta Fundacional de eme-ĝir
+gibil**. Sus principios inamovibles incluyen la **fidelidad fonética** al
+período base (Gudea y Ur III, c. 2150–2000 a.C.) y la **pureza léxica**: el
+costo de aprendizaje nunca justifica alterar un rasgo atestiguado.
 
 ## Propósito
 
@@ -19,8 +21,10 @@ Dos consecuencias prácticas:
 - La distancia entre lo atestiguado y lo reconstruido queda siempre visible
   mediante las etiquetas de procedencia.
 
-Las decisiones filológicas las toma **Fabián**, dueño del proyecto. El
-repositorio y sus herramientas solo las **registran y verifican**.
+Las decisiones las toma **Fabián**, fundador y dueño del proyecto. El
+asistente actúa como secretaría técnica: investiga, coteja fuentes y mantiene
+las herramientas que **registran y verifican** las decisiones. La memoria de
+trabajo del proyecto está en `CONTEXTO.md`.
 
 ## Estructura de carpetas
 
@@ -33,7 +37,8 @@ repositorio y sus herramientas solo las **registran y verifican**.
 | `tests/` | Pruebas con `unittest`. |
 
 Archivos en la raíz: `CLAUDE.md` (instrucciones permanentes para las sesiones
-de trabajo), `CHANGELOG.md` (versiones del estándar) y `.editorconfig`.
+de trabajo), `CONTEXTO.md` (memoria de trabajo: estado, decisiones y
+bitácora), `CHANGELOG.md` (versiones del estándar) y `.editorconfig`.
 
 ## Etiquetas de procedencia
 
@@ -47,6 +52,9 @@ Toda forma del estándar lleva una etiqueta que declara de dónde viene:
 - **`[NUEVO]`** — la forma es una invención declarada del proyecto, necesaria
   para hablar de lo que el corpus no cubre. Exige indicar la regla de
   formación empleada.
+- **`[ANTIGUO-PRÉSTAMO]`** — préstamo acadio antiguo, ya presente en el
+  sumerio atestiguado, que se conserva porque no existe un equivalente sumerio
+  nativo atestiguado (LEX-001 de la Carta).
 
 Estas etiquetas describen **el origen** de una forma, no su calidad ni su
 grado de aceptación: el estado de una decisión se indica aparte, en el campo
@@ -58,30 +66,26 @@ grado de aceptación: el estado de una decisión se indica aparte, en el campo
 propuesta → verificada → adoptada
 ```
 
-- **`propuesta`** — registrada, con puntajes o convención provisionales.
-- **`verificada`** — Fabián comprobó las fuentes.
-- **`adoptada`** — forma parte del estándar.
+- **`propuesta`** — registrada; sus fuentes pueden estar por cotejar.
+- **`verificada`** — sus fuentes están cotejadas en la obra misma, por Fabián
+  o por la secretaría técnica, y la ficha dice por quién.
+- **`adoptada`** — Fabián la aprobó: forma parte del estándar.
 
 Una ficha puede terminar también como **`rechazada`**, o como
 **`reemplazada`**, indicando en `reemplazada_por` la ficha que la sustituye.
+Nada se borra.
 
-**Solo Fabián cambia el estado de una ficha.**
+**Solo Fabián decide** que una ficha pase a adoptada, rechazada o reemplazada.
 
-## Regla de decisión
+## Tipos de ficha
 
-Las fichas de tipo `puntuada` aplican:
-
-```
-Puntaje = E − C + FL
-```
-
-donde `E` es la evidencia (0–3), `C` el costo de aprendizaje para un
-hispanohablante (0–3) y `FL` la carga funcional (0 o 1). Un rasgo se incluye
-**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Cuando ninguna opción
-alcanza `E ≥ 2`, la ficha es de tipo `convencion`: se adopta la convención
-académica y no se puntúa. Las escalas son **ordinales**: el puntaje es una
-regla de decisión explícita, no una medida exacta. El detalle de las escalas
-está en `CLAUDE.md`.
+- **`evidencia`** — el rasgo se decide por las fuentes, con la jerarquía de
+  `CLAUDE.md` §3. Exige al menos una fuente real. No se puntúa.
+- **`convencion`** — ninguna evidencia decide entre las opciones; se adopta
+  una convención declarada como tal.
+- **`puntuada`** — histórico: la regla `E − C + FL` del borrador v0.1.0
+  quedó en desuso el 19-10-2026, porque permitía excluir rasgos atestiguados
+  por su costo de aprendizaje. Solo se conserva en fichas reemplazadas.
 
 ## Cómo ejecutar las pruebas
 

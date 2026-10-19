@@ -23,7 +23,7 @@ entradas**: por ahora solo queda fijado el esquema que tendrá el archivo.
 | `lema_epsd2` | sí | Forma del lema tal como aparece en el ePSD2, para poder cotejar. |
 | `significado_es` | sí | Significado en español. |
 | `categoria` | sí | Categoría gramatical de la entrada. |
-| `procedencia` | sí | `ATESTIGUADO`, `DERIVADO` o `NUEVO`. |
+| `procedencia` | sí | `ATESTIGUADO`, `DERIVADO`, `NUEVO` o `ANTIGUO-PRÉSTAMO`. |
 | `fuente` | sí | Fuente de la entrada; `FUENTE POR VERIFICAR` mientras no esté comprobada. |
 | `regla` | condicional | **Obligatoria si `procedencia` es `DERIVADO` o `NUEVO`**: la regla de formación aplicada. Vacía si es `ATESTIGUADO`. |
 | `nivel` | sí | `nucleo` o `extendido`. |
@@ -36,7 +36,9 @@ Las tres etiquetas tienen el significado que fija el `README.md` de la raíz:
 `ATESTIGUADO` para lo que aparece en el corpus, `DERIVADO` para lo obtenido
 aplicando una regla productiva del sumerio a material atestiguado, y `NUEVO`
 para las invenciones declaradas del proyecto. `DERIVADO` y `NUEVO` no se
-admiten sin `regla`.
+admiten sin `regla`. `ANTIGUO-PRÉSTAMO` marca un préstamo acadio antiguo que se
+conserva porque no tiene equivalente sumerio nativo atestiguado (LEX-001 de la
+Carta Fundacional).
 
 ### Nivel
 
