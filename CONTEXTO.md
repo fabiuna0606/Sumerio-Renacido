@@ -18,7 +18,7 @@
 
 Estado actual: **v0.3.0-borrador**, la primera con decisiones adoptadas.
 - 25 fichas: 17 adoptadas, 1 verificada (FON-002) y 5 reemplazadas.
-- 49 pruebas, todas pasan.
+- 47 pruebas, todas pasan.
 - Sobre las fichas de fonología, Fabián delegó: «hazlo como hemos venido trabajando y resuelve tú». Se adoptaron las que tienen doble fuente B coincidente (Jagersma 2010 y Zólyomi 2017).
 
 ## 2. Reglas de trabajo que pidió Fabián
