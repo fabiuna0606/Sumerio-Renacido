@@ -109,3 +109,4 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
     - Se migran FUN-001, FUN-002, ESC-002, LEX-001, LEX-002, NOM-001 y ACA-001.
     - Versión v0.3.0-borrador.
   - Fabián pregunta qué falta para empezar las clases. Respuesta: las bases del sumerio permiten empezar ya; los pendientes son de capas altas y no bloquean. Se le piden tres decisiones: idiomas activos, minutos diarios y recordatorios.
+  - Se crea una memoria maestra privada en Claude Docs, con el contexto completo, incluido el personal, que no va en este repositorio público.
