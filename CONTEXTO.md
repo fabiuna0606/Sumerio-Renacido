@@ -111,3 +111,4 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - Fabián pregunta qué falta para empezar las clases. Respuesta: las bases del sumerio permiten empezar ya; los pendientes son de capas altas y no bloquean. Se le piden tres decisiones: idiomas activos, minutos diarios y recordatorios.
   - Se crea una memoria maestra privada en Claude Docs, con el contexto completo, incluido el personal, que no va en este repositorio público.
   - Fabián fija su bloque activo de idiomas, que incluye ahora el acadio en paralelo. Se retoma la Clase 1 de sumerio con oraciones atestiguadas de Jagersma (pp. 81, 327, 365).
+  - El sumerio se reinicia desde cero: la Clase 1 nueva cubre los sonidos (fonología adoptada) y 8 signos (AN, KI, É, LÚ, GAL, LUGAL, DUMU, DUB); lugal = «hombre grande» (Jagersma pp. 77 y 121).
