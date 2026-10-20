@@ -112,3 +112,4 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - Se crea una memoria maestra privada en Claude Docs, con el contexto completo, incluido el personal, que no va en este repositorio público.
   - Fabián fija su bloque activo de idiomas, que incluye ahora el acadio en paralelo. Se retoma la Clase 1 de sumerio con oraciones atestiguadas de Jagersma (pp. 81, 327, 365).
   - El sumerio se reinicia desde cero: la Clase 1 nueva cubre los sonidos (fonología adoptada) y 8 signos (AN, KI, É, LÚ, GAL, LUGAL, DUMU, DUB); lugal = «hombre grande» (Jagersma pp. 77 y 121).
+  - Clase 1 de sumerio: 8/10, no alcanza el umbral del 90 %. Se reevalúa lo fallado.
