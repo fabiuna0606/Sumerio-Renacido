@@ -114,3 +114,4 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - El sumerio se reinicia desde cero: la Clase 1 nueva cubre los sonidos (fonología adoptada) y 8 signos (AN, KI, É, LÚ, GAL, LUGAL, DUMU, DUB); lugal = «hombre grande» (Jagersma pp. 77 y 121).
   - Clase 1 de sumerio: 8/10, no alcanza el umbral del 90 %. Se reevalúa lo fallado.
   - Primera reevaluación de la Clase 1: 3/5. Confunde visualmente 𒌉 y 𒁾 con 𒇽 y 𒃲. Se le envía una lámina con pistas.
+  - 21-10: reevaluación 2 de la Clase 1: 1,5/5. Se reenseñan dumu, dub y lugal con palabras clave; los bloques de signos serán más pequeños.
