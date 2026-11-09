@@ -1,0 +1,17 @@
+# Licencia del contenido — CC BY-SA 4.0
+
+Todo el contenido de este repositorio que no es código —el estándar, las
+fichas de `decisiones/`, el léxico y la documentación— se publica bajo la
+licencia **Creative Commons Atribución-CompartirIgual 4.0 Internacional
+(CC BY-SA 4.0)**:
+
+https://creativecommons.org/licenses/by-sa/4.0/
+
+El texto legal completo no se reproduce aquí: la referencia es el enlace
+anterior.
+
+El código de `scripts/` y `tests/` se publica aparte bajo la licencia MIT;
+véase `LICENSE`.
+
+Los materiales de terceros conservan sus propias condiciones; véase la sección
+«Licencias y atribución» del `README.md`.

@@ -22,7 +22,7 @@ import validate_decisions as validator  # noqa: E402
 
 DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
-EXPECTED_CARD_COUNT = 25
+EXPECTED_CARD_COUNT = 27
 
 VALID_CARD = {
     "id": "TEC-900",

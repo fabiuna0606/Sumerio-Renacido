@@ -3,8 +3,12 @@
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
 **documentado y auditable**, regido por la **Carta Fundacional de eme-ĝir
 gibil**. Sus principios inamovibles incluyen la **fidelidad fonética** al
-período base (Gudea y Ur III, c. 2150–2000 a.C.) y la **pureza léxica**: el
-costo de aprendizaje nunca justifica alterar un rasgo atestiguado.
+período base (Gudea y Ur III, c. 2150–2000 a.C.) y la **pureza léxica**:
+el costo de aprendizaje nunca justifica alterar un rasgo atestiguado. Cuando
+el sumerio esté consolidado, el mismo método se aplicará al **acadio**.
+
+**Estado:** v0.4.1-borrador. 27 fichas de decisión: 19 adoptadas, 1
+verificada, 2 propuestas y 5 reemplazadas.
 
 ## Propósito
 
@@ -38,7 +42,10 @@ trabajo del proyecto está en `CONTEXTO.md`.
 
 Archivos en la raíz: `CLAUDE.md` (instrucciones permanentes para las sesiones
 de trabajo), `CONTEXTO.md` (memoria de trabajo: estado, decisiones y
-bitácora), `CHANGELOG.md` (versiones del estándar) y `.editorconfig`.
+bitácora), `CHANGELOG.md` (versiones del estándar), `LICENSE` (licencia del
+código), `LICENSE-CONTENT` (licencia del contenido) y `.editorconfig`. En
+`.github/workflows/` está la integración continua, y en `.claude/` el hook que
+comprueba el repositorio al empezar cada sesión de trabajo.
 
 ## Etiquetas de procedencia
 
@@ -54,7 +61,7 @@ Toda forma del estándar lleva una etiqueta que declara de dónde viene:
   formación empleada.
 - **`[ANTIGUO-PRÉSTAMO]`** — préstamo acadio antiguo, ya presente en el
   sumerio atestiguado, que se conserva porque no existe un equivalente sumerio
-  nativo atestiguado (LEX-001 de la Carta).
+  nativo atestiguado (LEX-001).
 
 Estas etiquetas describen **el origen** de una forma, no su calidad ni su
 grado de aceptación: el estado de una decisión se indica aparte, en el campo
@@ -104,3 +111,21 @@ python3 scripts/validate_decisions.py
 El validador termina con código de salida `0` si todas las fichas de
 `decisiones/` son válidas y `1` si encuentra algún error. Acepta como
 argumento opcional un directorio distinto de `decisiones/`.
+
+## Licencias y atribución
+
+- **Código** (`scripts/`, `tests/`) — licencia MIT, en `LICENSE`, con titular
+  Fabián y año 2026.
+- **Contenido** (estándar, fichas de `decisiones/`, léxico y documentación) —
+  CC BY-SA 4.0, en `LICENSE-CONTENT`:
+  <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+Materiales de terceros incorporados al proyecto:
+
+- Los datos de **Oracc** y del **ePSD2** están bajo **CC BY-SA 3.0**: exigen
+  **atribución** y **compartir igual**.
+- El material derivado del **ETCSL** está bajo **CC BY-NC-SA 3.0**: debe
+  **marcarse en su procedencia** y **no puede usarse en materiales de pago**.
+
+Las licencias se eligieron **sin asesoría legal**; queda anotado en
+`decisiones/PENDIENTES.md`.

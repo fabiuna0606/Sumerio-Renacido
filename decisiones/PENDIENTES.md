@@ -7,31 +7,74 @@ ficha que lo resolvió.
 
 ## Preguntas abiertas
 
-1. **Licencia del proyecto.** No está decidida. Hasta que lo esté, el
-   repositorio no declara condiciones de uso ni de redistribución. La Carta
-   prevé una licencia abierta que obligue a citar para la norma y el
-   diccionario, y una licencia de software libre para el código.
-2. **Licencias de Oracc y del ePSD2 para datos derivados.** Hay que comprobar
-   qué permiten exactamente ambos proyectos respecto de obras derivadas antes
-   de incorporar material suyo al léxico o al corpus. FUENTE POR VERIFICAR.
-3. **FON-002 (no hay /o/).** Jagersma lo sostiene, pero Zólyomi (2017: 32)
+1. **FON-002 (no hay /o/).** Jagersma lo sostiene, pero Zólyomi (2017: 32)
    recoge propuestas de seis vocales y cita a Keetman con siete o nueve. Sin
    consenso de dos fuentes, la ficha queda `verificada` y rige Jagersma
    (FUN-002). Para cerrarla hace falta una fuente C que discuta /o/.
-4. **Páginas de Zólyomi.** Se leyeron en el PDF oficial mediante extracción
+2. **Páginas de Zólyomi.** Se leyeron en el PDF oficial mediante extracción
    automática. Conviene confirmarlas en el libro.
-5. **Fichas futuras:** LEX-003 (vocabulario monoteísta) y la ficha de
+3. **Fichas futuras:** LEX-003 (vocabulario monoteísta) y la ficha de
    «computadora» (candidato dub ĝiš-ḫur-zu, componentes por verificar en el
    ePSD2).
+4. **Forma de cita de «gibil» en el ePSD2.** Falta comprobar en el ePSD2 la
+   forma de cita de `gibil` («nuevo»), que forma parte del nombre del
+   proyecto. FUENTE POR VERIFICAR.
+5. **Las licencias se eligieron sin asesoría legal.** Ni la elección de MIT
+   para el código, ni la de CC BY-SA 4.0 para el contenido, ni el resumen de
+   las condiciones de Oracc, del ePSD2 y del ETCSL han pasado por revisión
+   jurídica.
+6. **¿Se automatiza la fusión a `main`?** Fabián pidió automatizar todo y
+   no depender de él, pero la **TEC-003** reserva la fusión a Fabián. Quedan
+   dos vías posibles, ninguna elegida: activar la fusión automática de GitHub
+   para los PR que lleguen en verde, o cambiar la TEC-003. La fusión del
+   08-11-2026 (v0.4.1) la hizo la secretaría técnica porque Fabián lo pidió
+   de forma expresa («corrige lo que tengas que corregir»); eso no cambia la
+   regla general, que sigue abierta.
 
 ## Inconsistencias abiertas
 
 1. **Referencias sin datos bibliográficos completos.** De Foxvog,
    *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
-   de ePSD2, Oracc y ETCSL no se ha registrado versión ni fecha de consulta.
-   FUENTE POR VERIFICAR.
+   de Oracc y del ETCSL no se ha registrado versión ni fecha de consulta.
+   FUENTE POR VERIFICAR. Del ePSD2 ya se registran versión y fecha de
+   consulta (2.7.2, compilada el 2024-08-31, consultado el 2026-09-27).
+2. **TEC-003 y TEC-004 siguen en estado `propuesta`**, aunque la integración
+   continua y la estrategia de ramas que describen ya funcionan en el
+   repositorio. Falta que Fabián las confirme.
+
+## Diseño futuro
+
+Anotado, sin implementar.
+
+1. **Tipo de ficha `seleccion`.** Se anotó el 27-09-2026 como un tipo con
+   **puntaje por opción**, para elegir entre alternativas cuando alguna
+   alcance `E ≥ 2`. Desde el 19-10-2026 la regla de puntaje está en desuso y
+   las fichas de evidencia se deciden por las fuentes, así que falta que
+   Fabián decida si este tipo sigue teniendo sentido. Ni el formato de ficha,
+   ni `decisiones/PLANTILLA.md`, ni `scripts/validate_decisions.py` lo
+   admiten.
 
 ## Resuelto
+
+### 08-11-2026: fusión de las dos líneas de trabajo
+
+Entre el 27-09-2026 y el 08-11-2026 el repositorio avanzó por dos ramas que no
+se conocían entre sí: `main` (sesión 2: licencias, ORT-001 con ŋ, integración
+continua, TEC-003 y TEC-004) y `claude/contexto-proyecto` (alineación con la
+Carta y primeras adopciones). Se fusionaron siguiendo la decisión de Fabián
+del 19-10-2026: **donde el repositorio y la Carta discrepan, prevalece la
+Carta**.
+
+| Discrepancia | Rama `main` | Resolución |
+|---|---|---|
+| ĝ o ŋ | ORT-001 escribía ŋ y el nombre era «emegir gibil» | Rige ESC-001 (adoptada): **ĝ**, y el nombre **eme-ĝir gibil**. ORT-001 sigue `reemplazada` |
+| Tipos de ficha | `puntuada` siempre se puntúa | Rige el tipo `evidencia` de la Carta; `puntuada` es histórico |
+| Licencias | Resueltas en la sesión 2 | Se conservan: son compatibles con lo que prevé la Carta (una licencia abierta que obligue a citar para la norma y una licencia de software libre para el código) |
+| Números de versión | v0.2.0 y v0.2.1 | Se conservan; las versiones de la Carta pasan a v0.3.0 y v0.4.0 (`CHANGELOG.md`) |
+
+La prueba que fallaba si aparecía la letra ĝ fuera de ORT-001 se retiró, porque
+contradice ESC-001. Las demás comprobaciones automáticas de `main` se
+conservan.
 
 ### 19-10-2026: el repositorio se alinea con la Carta Fundacional
 
@@ -57,7 +100,7 @@ Con esto también quedan resueltas tres inconsistencias anteriores:
 - **ORT-001 seguía abierta mientras el repositorio ya escribía ĝ.** Resuelto
   por ESC-001.
 
-La antigua pregunta 3 («¿qué letra usa el ePSD2?») queda contestada: según la
+La antigua pregunta «¿qué letra usa el ePSD2?» queda contestada: según la
 Carta, el ePSD2 escribe ŋ (por ejemplo, saŋ).
 
 ### 19-10-2026 (segunda parte): adopción y migración
@@ -69,7 +112,7 @@ revés.
 - **Segunda fuente.** Se cotejó Zólyomi (2017). Coincide con Jagersma en
   FON-001, FON-004, FON-005, FON-006, FON-008 y FON-011 a FON-014, que pasan
   a `adoptada` con doble fuente B. FON-002 sigue `verificada` (pregunta
-  abierta 3).
+  abierta 1).
 - **Decisiones migradas a fichas:**
   - FUN-001 (período base).
   - FUN-002 (Jagersma, obra de referencia).
@@ -80,3 +123,28 @@ revés.
   - ACA-001 (paleobabilónico).
 - **TEC-001 y TEC-002.** Se corrigió su texto de verificación, que hablaba
   de puntajes que no tienen, y pasan a `adoptada`.
+
+### 27-09-2026: resoluciones de Fabián en la sesión 2 (rama `main`)
+
+Se conservan tal como se registraron, para no perder el rastro.
+
+- **Licencia del proyecto.** El código de `scripts/` y `tests/` se publica
+  bajo la licencia MIT, en `LICENSE`, con titular «Fabián» y año 2026. El
+  resto del contenido —estándar, fichas, léxico y documentación— se publica
+  bajo CC BY-SA 4.0, con el aviso en `LICENSE-CONTENT`.
+- **Licencias de Oracc y del ePSD2 para datos derivados.** Los datos de
+  Oracc y del ePSD2 están bajo CC BY-SA 3.0: exigen atribución y compartir
+  igual. El material derivado del ETCSL está bajo CC BY-NC-SA 3.0: debe
+  marcarse en su procedencia y no puede usarse en materiales de pago. Queda
+  registrado en la sección «Licencias y atribución» del `README.md`.
+- **Qué letra usa el ePSD2 (ORT-001).** El ePSD2 usa ŋ, por ejemplo en el
+  lema `diŋir`. ORT-001 recogió esa decisión con el ePSD2 como fuente.
+  *(Superado el 19-10-2026 por ESC-001.)*
+- **Fichas puntuadas con E < 2.** Una ficha `puntuada` siempre se puntúa,
+  aunque `E < 2`; FON-002, FON-007, FON-008 y FON-009 seguían siendo
+  puntuadas. *(Superado el 19-10-2026 por el tipo `evidencia`.)*
+- **`E` se registra por ficha, no por opción.** El desglose por opción se
+  aplazó al tipo `seleccion` (ver «Diseño futuro»).
+- **Texto de `verificacion` en las fichas de convención.** FON-010, ORT-001,
+  TEC-001 y TEC-002 pasaron a llevar
+  `verificacion = "PENDIENTE: comprobar la convención en las fuentes"`.

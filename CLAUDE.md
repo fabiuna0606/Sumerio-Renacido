@@ -102,15 +102,23 @@ por firme con doble fuente B o C; para una palabra basta su entrada del ePSD2.
 
 ## 4. Referencias del proyecto
 
-- **Jagersma, *A Descriptive Grammar of Sumerian* (2010)** — obra de
-  referencia principal, aprobada por Fabián el 18-10-2026. Si otra fuente la
-  contradice, prevalece Jagersma, salvo que una publicación posterior con
-  revisión por pares aporte evidencia nueva.
+- **Jagersma, *A Descriptive Grammar of Sumerian* (2010)**, tesis doctoral
+  de la Universidad de Leiden — obra de referencia principal, aprobada por
+  Fabián el 18-10-2026. Si otra fuente la contradice, prevalece Jagersma,
+  salvo que una publicación posterior con revisión por pares aporte evidencia
+  nueva.
 - Zólyomi, *An Introduction to the Grammar of Sumerian* (2017), para la
   enseñanza.
 - Attinger (1993) y Edzard (2003), para contrastar.
-- Foxvog, *Introduction to Sumerian Grammar*.
-- ePSD2, Oracc, ETCSL, CDLI, BDTNS, DCCLT.
+- Foxvog, *Introduction to Sumerian Grammar*. Año y edición: FUENTE POR
+  VERIFICAR.
+- ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27.
+- Oracc y ETCSL. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+- CDLI, BDTNS y DCCLT.
+
+Las referencias digitales se citan con su versión y su fecha de consulta
+cuando se conocen; mientras no se conozcan, se escribe `FUENTE POR VERIFICAR`
+en su lugar.
 
 Una página o un pasaje concreto solo se cita si se **cotejó** en la obra misma,
 y la ficha dice quién lo cotejó. Mientras no esté cotejado, se escribe
@@ -148,7 +156,29 @@ en `tests/`**. Ejecuta:
 python3 -m unittest discover -s tests -v
 ```
 
-## 8. Cierre de sesión
+Las reglas **1, 4 y 5** de la sección 1 **se comprueban solas** en
+`tests/test_repository_rules.py`: la cadena `FUENTE POR VERIFICAR` escrita
+exactamente así, el uso de solo la biblioteca estándar, y UTF-8 con NFC y fin
+de línea LF en todos los archivos. No hace falta revisarlas a mano, pero
+tampoco se pueden incumplir: las pruebas fallan.
+
+El hook `.claude/hooks/session-start.sh`, registrado en
+`.claude/settings.json`, ejecuta el validador y las pruebas al arrancar cada
+sesión e informa del resultado.
+
+## 8. Ramas e integración continua
+
+- **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
+  defecto**. Cada sesión trabaja en **su propia rama** y entra a `main` **solo
+  mediante un PR que Fabián fusiona**.
+- **Integración continua (TEC-004):** **ningún PR se fusiona con la CI en
+  rojo.** El workflow `.github/workflows/ci.yml` ejecuta
+  `python3 scripts/validate_decisions.py` y
+  `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
+  externas, en cada push, en cada PR, una vez por semana y a petición. Un job
+  aparte hace cumplir la TEC-003: un PR que no apunte a `main` falla.
+
+## 9. Cierre de sesión
 
 Al cerrar cada sesión:
 
