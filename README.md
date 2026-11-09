@@ -25,10 +25,30 @@ Dos consecuencias prácticas:
 - La distancia entre lo atestiguado y lo reconstruido queda siempre visible
   mediante las etiquetas de procedencia.
 
-Las decisiones las toma **Fabián**, fundador y dueño del proyecto. El
-asistente actúa como secretaría técnica: investiga, coteja fuentes y mantiene
-las herramientas que **registran y verifican** las decisiones. La memoria de
-trabajo del proyecto está en `CONTEXTO.md`.
+## Autoría y papel de la IA
+
+**Sumerio Renacido es un proyecto de Fabián**, su fundador y dueño.
+
+- **Fabián eligió las fuentes** en las que se basa el estándar. La obra de
+  referencia principal es la tesis doctoral de Bram Jagersma, *A Descriptive
+  Grammar of Sumerian* (Universidad de Leiden, 2010), fijada en la ficha
+  FUN-002. Para el acadio se usa el *Chicago Assyrian Dictionary*.
+- **Fabián fijó las condiciones del proyecto**: el período de Ur III como
+  base, el cuneiforme como escritura principal, la pureza léxica, la
+  pronunciación fiel sin adaptarla al español, y que la investigación
+  académica con consenso pese siempre más que Wikipedia o cualquier fuente sin
+  fundamento. Sobre esas condiciones aprobó los principios de la Carta
+  Fundacional.
+- **Solo Fabián decide** que una ficha pase a adoptada, rechazada o
+  reemplazada.
+
+El proyecto se trabaja con **Claude**, una IA de Anthropic, que aparece en el
+historial como coautora de los commits. Su papel es de **secretaría técnica**:
+propone, redacta las fichas, coteja cada afirmación con las fuentes elegidas y
+mantiene el validador, las pruebas y la integración continua. **Las reglas del
+estándar no salen de la IA**, sino de las fuentes académicas, y la propia
+jerarquía de fuentes del proyecto le da a la IA peso nulo como evidencia
+(`CLAUDE.md` §3). La memoria de trabajo del proyecto está en `CONTEXTO.md`.
 
 ## Estructura de carpetas
 
