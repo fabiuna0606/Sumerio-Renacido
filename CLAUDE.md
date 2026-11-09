@@ -107,13 +107,22 @@ por firme con doble fuente B o C; para una palabra basta su entrada del ePSD2.
   Fabián el 18-10-2026. Si otra fuente la contradice, prevalece Jagersma,
   salvo que una publicación posterior con revisión por pares aporte evidencia
   nueva.
-- Zólyomi, *An Introduction to the Grammar of Sumerian* (2017), para la
-  enseñanza.
+- Zólyomi, *An Introduction to the Grammar of Sumerian* (Budapest: Eötvös
+  University Press, 2017; ISBN 978-963-284-844-0), para la enseñanza. El PDF
+  de acceso abierto de ELTE Reader es la edición impresa: sus páginas se citan
+  por el número impreso.
 - Attinger (1993) y Edzard (2003), para contrastar.
-- Foxvog, *Introduction to Sumerian Grammar*. Año y edición: FUENTE POR
-  VERIFICAR.
-- ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27.
-- Oracc y ETCSL. Versión y fecha de consulta: FUENTE POR VERIFICAR.
+- Foxvog, *Introduction to Sumerian Grammar*, Cuneiform Digital Library
+  Preprints 2.0 (2016-01-04). No se comprobó si hay una revisión posterior.
+- ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27;
+  sigue vigente el 2026-11-09.
+- Oracc (oracc.org): no tiene número de versión; se cita con la fecha de
+  consulta (2026-11-09).
+- ETCSL: Black, J. A., Cunningham, G., Ebeling, J., Flückiger-Hawker, E.,
+  Robson, E., Taylor, J., y Zólyomi, G., *The Electronic Text Corpus of
+  Sumerian Literature* (http://etcsl.orinst.ox.ac.uk/), Oxford 1998–2006.
+  Segunda edición, actualizada por última vez el 2006-10-23; consultado el
+  2026-11-09.
 - CDLI, BDTNS y DCCLT.
 
 Las referencias digitales se citan con su versión y su fecha de consulta
@@ -168,11 +177,13 @@ sesión e informa del resultado.
 
 ## 8. Ramas e integración continua
 
-- **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
-  defecto**. Cada sesión trabaja en **su propia rama** y entra a `main` **solo
-  mediante un PR que Fabián fusiona**.
-- **Integración continua (TEC-004):** **ningún PR se fusiona con la CI en
-  rojo.** El workflow `.github/workflows/ci.yml` ejecuta
+- **Estrategia de ramas (TEC-003, adoptada el 09-11-2026):** `main` es la
+  rama **estable y por defecto**. Cada sesión trabaja en **su propia rama** y
+  entra a `main` mediante un PR, que **la secretaría técnica fusiona solo si
+  la CI está en verde**. Las decisiones del estándar las sigue tomando Fabián
+  en la conversación de trabajo; el PR solo las registra.
+- **Integración continua (TEC-004, adoptada el 09-11-2026):** **ningún PR
+  se fusiona con la CI en rojo.** El workflow `.github/workflows/ci.yml` ejecuta
   `python3 scripts/validate_decisions.py` y
   `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
   externas, en cada push, en cada PR, una vez por semana y a petición. Un job

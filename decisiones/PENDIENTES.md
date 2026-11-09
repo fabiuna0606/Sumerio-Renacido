@@ -7,54 +7,61 @@ ficha que lo resolvió.
 
 ## Preguntas abiertas
 
-1. **FON-002 (no hay /o/).** Jagersma lo sostiene, pero Zólyomi (2017: 32)
-   recoge propuestas de seis vocales y cita a Keetman con siete o nueve. Sin
-   consenso de dos fuentes, la ficha queda `verificada` y rige Jagersma
-   (FUN-002). Para cerrarla hace falta una fuente C que discuta /o/.
-2. **Páginas de Zólyomi.** Se leyeron en el PDF oficial mediante extracción
-   automática. Conviene confirmarlas en el libro.
-3. **Fichas futuras:** LEX-003 (vocabulario monoteísta) y la ficha de
+1. **FON-002 (no hay /o/).** Jagersma lo sostiene. Zólyomi (2017: 32) recoge
+   propuestas de seis vocales y cita a Keetman (2005) con siete o nueve. La
+   fuente C buscada el 09-11-2026 es Smith, «[-ATR] Harmony and the Vowel
+   Inventory of Sumerian», *Journal of Cuneiform Studies* 59 (2007): 19–38,
+   que defiende siete vocales, entre ellas /o/. Contradice a Jagersma, pero es
+   anterior a él, así que rige Jagersma (FUN-002 y `CLAUDE.md` §4). No hay
+   consenso de dos fuentes: por decisión de Fabián del 09-11-2026, la ficha
+   sigue `verificada` y no se adopta. Para cerrarla haría falta una
+   publicación con revisión por pares posterior a 2010. Pista sin leer:
+   Keetman, «The limits for vowel harmony in Sumerian and some remarks about
+   the need of transparent data», NABU 2009/65.
+2. **Fichas futuras:** LEX-003 (vocabulario monoteísta), la ficha de
    «computadora» (candidato dub ĝiš-ḫur-zu, componentes por verificar en el
-   ePSD2).
-4. **Forma de cita de «gibil» en el ePSD2.** Falta comprobar en el ePSD2 la
+   ePSD2) y la ficha de la palabra «y» (*ù* es un préstamo acadio).
+3. **Forma de cita de «gibil» en el ePSD2.** Falta comprobar en el ePSD2 la
    forma de cita de `gibil` («nuevo»), que forma parte del nombre del
-   proyecto. FUENTE POR VERIFICAR.
-5. **Las licencias se eligieron sin asesoría legal.** Ni la elección de MIT
-   para el código, ni la de CC BY-SA 4.0 para el contenido, ni el resumen de
-   las condiciones de Oracc, del ePSD2 y del ETCSL han pasado por revisión
-   jurídica.
-6. **¿Se automatiza la fusión a `main`?** Fabián pidió automatizar todo y
-   no depender de él, pero la **TEC-003** reserva la fusión a Fabián. Quedan
-   dos vías posibles, ninguna elegida: activar la fusión automática de GitHub
-   para los PR que lleguen en verde, o cambiar la TEC-003. La fusión del
-   08-11-2026 (v0.4.1) la hizo la secretaría técnica porque Fabián lo pidió
-   de forma expresa («corrige lo que tengas que corregir»); eso no cambia la
-   regla general, que sigue abierta.
+   proyecto. El 09-11-2026 se confirmó que la versión vigente es la 2.7.2,
+   pero su glosario no se pudo abrir desde el entorno de trabajo. FUENTE POR
+   VERIFICAR.
 
 ## Inconsistencias abiertas
 
-1. **Referencias sin datos bibliográficos completos.** De Foxvog,
-   *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
-   de Oracc y del ETCSL no se ha registrado versión ni fecha de consulta.
-   FUENTE POR VERIFICAR. Del ePSD2 ya se registran versión y fecha de
-   consulta (2.7.2, compilada el 2024-08-31, consultado el 2026-09-27).
-2. **TEC-003 y TEC-004 siguen en estado `propuesta`**, aunque la integración
-   continua y la estrategia de ramas que describen ya funcionan en el
-   repositorio. Falta que Fabián las confirme.
-
-## Diseño futuro
-
-Anotado, sin implementar.
-
-1. **Tipo de ficha `seleccion`.** Se anotó el 27-09-2026 como un tipo con
-   **puntaje por opción**, para elegir entre alternativas cuando alguna
-   alcance `E ≥ 2`. Desde el 19-10-2026 la regla de puntaje está en desuso y
-   las fichas de evidencia se deciden por las fuentes, así que falta que
-   Fabián decida si este tipo sigue teniendo sentido. Ni el formato de ficha,
-   ni `decisiones/PLANTILLA.md`, ni `scripts/validate_decisions.py` lo
-   admiten.
+Ninguna.
 
 ## Resuelto
+
+### 09-11-2026: decisiones de Fabián sobre los pendientes
+
+Fabián eligió las opciones recomendadas en las seis preguntas que se le
+presentaron, cada una con sus razones a favor y en contra.
+
+- **Fusión a `main` (antigua pregunta 6), TEC-003 y TEC-004.** La secretaría
+  técnica fusiona los PR solo si la integración continua está en verde. TEC-003
+  y TEC-004 pasan a `adoptada`.
+- **Tipo de ficha `seleccion` (antiguo «Diseño futuro»). Descartado.** Se
+  pensó para la regla de puntaje, en desuso desde el 19-10-2026. Cuando varias
+  opciones tienen evidencia, decide la jerarquía de fuentes de `CLAUDE.md` §3,
+  y si chocan, prevalece Jagersma (FUN-002).
+- **FON-002.** Sigue `verificada`, y se busca una fuente C (pregunta abierta 1).
+- **Páginas de Zólyomi.** Se cierra. El PDF de ELTE Reader es la edición
+  impresa (Eötvös University Press, 2017, ISBN 978-963-284-844-0). El
+  09-11-2026 se recomprobaron contra el número impreso las diez citas de las
+  fichas: p. 22 (ŋ, ḫ, š), p. 28 (oclusivas sordas con aspiración), p. 29
+  (/dr/, cuatro vocales escritas, longitud vocálica), p. 32 (seis vocales;
+  Keetman) y p. 33 (acento de intensidad, en la última sílaba). Todas
+  coinciden.
+- **Licencias sin asesoría legal.** Fabián acepta MIT y CC BY-SA 4.0 sin
+  revisión jurídica. Sigue en pie la condición del ETCSL: su material no puede
+  usarse en materiales de pago (`README.md`).
+- **Ramas antiguas.** Se borran las ramas ya contenidas en `main`; nada de su
+  historial se pierde.
+
+También se completaron las referencias (antigua inconsistencia 1): Foxvog,
+CDLP 2.0 (2016-01-04); Oracc, sin número de versión, con fecha de consulta;
+ETCSL, segunda edición, Oxford 1998–2006. El detalle está en `CLAUDE.md` §4.
 
 ### 08-11-2026: fusión de las dos líneas de trabajo
 

@@ -7,8 +7,8 @@ período base (Gudea y Ur III, c. 2150–2000 a. e. c.) y la **pureza léxica**:
 el costo de aprendizaje nunca justifica alterar un rasgo atestiguado. Cuando
 el sumerio esté consolidado, el mismo método se aplicará al **acadio**.
 
-**Estado:** v0.4.1-borrador. 27 fichas de decisión: 19 adoptadas, 1
-verificada, 2 propuestas y 5 reemplazadas.
+**Estado:** v0.4.2-borrador. 27 fichas de decisión: 21 adoptadas, 1
+verificada, 0 propuestas y 5 reemplazadas.
 
 ## Propósito
 

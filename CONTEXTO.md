@@ -8,7 +8,7 @@
 >
 > **Sobre las citas:** las páginas citadas aquí las cotejó Claude, como secretaría técnica, en las propias obras (`CLAUDE.md` §4). Cada ficha indica quién las cotejó y cómo.
 >
-> Última actualización: **2026-11-09, 00:30 (UTC−6)**.
+> Última actualización: **2026-11-09, 01:00 (UTC−6)**.
 
 ---
 
@@ -16,8 +16,9 @@
 
 **Decisión de Fabián (19-10-2026):** las decisiones se toman en la conversación de trabajo con él y en la Carta Fundacional (Claude Docs, privada). **El repositorio es su reflejo, nunca al revés.** Claude lo actualiza en cada mensaje, sin pedir permiso para leerlo.
 
-Estado actual: **v0.4.1-borrador**, en la rama `main`, que es la rama por defecto. La v0.4.0 fue la primera con decisiones adoptadas.
-- 27 fichas: 19 adoptadas, 1 verificada (FON-002), 2 propuestas (TEC-003 y TEC-004) y 5 reemplazadas.
+Estado actual: **v0.4.2-borrador**, en la rama `main`. La v0.4.0 fue la primera con decisiones adoptadas.
+- 27 fichas: 21 adoptadas, 1 verificada (FON-002) y 5 reemplazadas.
+- Los PR entran a `main` cuando la integración continua está en verde; los fusiona la secretaría técnica (TEC-003).
 - Todas las pruebas pasan, también en la integración continua de GitHub.
 - Sobre las fichas de fonología, Fabián delegó: «hazlo como hemos venido trabajando y resuelve tú». Se adoptaron las que tienen doble fuente B coincidente (Jagersma 2010 y Zólyomi 2017).
 
@@ -82,12 +83,11 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
 
 ## 6. Pendientes
 
-- **FON-002 (no hay /o/).** Sin consenso: Zólyomi recoge propuestas de más vocales. Hace falta una fuente C.
-- **Confirmar las páginas de Zólyomi** en el libro impreso. Se leyeron por extracción automática.
+- **FON-002 (no hay /o/).** Sin consenso. La fuente C encontrada (Smith, JCS 59, 2007) defiende siete vocales, pero es anterior a Jagersma (2010), así que rige FUN-002. Fabián decidió dejarla `verificada`; para cerrarla hace falta una publicación posterior a 2010.
+- **Forma de cita de *gibil* en el ePSD2**: el glosario del ePSD2 no se pudo abrir desde el entorno de trabajo.
 - **Ficha «computadora»**: verificar *ĝiš-ḫur* y *-zu* en el ePSD2.
 - **LEX-003**: vocabulario para «Dios único».
 - **Ficha para «y»**: *ù* es un préstamo acadio; cotejar en Jagersma la coordinación nativa.
-- **TEC-003 y TEC-004**: falta que Fabián confirme las dos convenciones técnicas.
 
 ## 7. Bitácora
 
@@ -116,3 +116,11 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - `README.md`: sección «Autoría y papel de la IA».
   - `main` pasa a ser la rama por defecto, como dice la TEC-003.
   - Se corrigen en este archivo el número de fichas adoptadas (19) y la fecha del andamiaje (27-09).
+- **09-11-2026**: Fabián decide los pendientes, eligiendo las opciones recomendadas (v0.4.2-borrador).
+  - TEC-003 y TEC-004 adoptadas: la secretaría técnica fusiona los PR con la CI en verde.
+  - Se descarta el tipo de ficha `seleccion`.
+  - FON-002 sigue `verificada`. Se encontró la fuente C: Smith (2007), con siete vocales.
+  - Páginas de Zólyomi recomprobadas contra la edición impresa: las diez citas coinciden.
+  - Licencias aceptadas sin asesoría legal.
+  - Referencias completas: Foxvog, Oracc y ETCSL.
+  - Se borran las ramas antiguas ya contenidas en `main`.
