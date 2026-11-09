@@ -8,7 +8,7 @@
 >
 > **Sobre las citas:** las páginas citadas aquí las cotejó Claude, como secretaría técnica, en las propias obras (`CLAUDE.md` §4). Cada ficha indica quién las cotejó y cómo.
 >
-> Última actualización: **2026-10-19, 17:55 (UTC−6)**.
+> Última actualización: **2026-11-09, 00:30 (UTC−6)**.
 
 ---
 
@@ -16,9 +16,9 @@
 
 **Decisión de Fabián (19-10-2026):** las decisiones se toman en la conversación de trabajo con él y en la Carta Fundacional (Claude Docs, privada). **El repositorio es su reflejo, nunca al revés.** Claude lo actualiza en cada mensaje, sin pedir permiso para leerlo.
 
-Estado actual: **v0.3.0-borrador**, la primera con decisiones adoptadas.
-- 25 fichas: 17 adoptadas, 1 verificada (FON-002) y 5 reemplazadas.
-- 47 pruebas, todas pasan.
+Estado actual: **v0.4.1-borrador**, en la rama `main`, que es la rama por defecto. La v0.4.0 fue la primera con decisiones adoptadas.
+- 27 fichas: 19 adoptadas, 1 verificada (FON-002), 2 propuestas (TEC-003 y TEC-004) y 5 reemplazadas.
+- Todas las pruebas pasan, también en la integración continua de GitHub.
 - Sobre las fichas de fonología, Fabián delegó: «hazlo como hemos venido trabajando y resuelve tú». Se adoptaron las que tienen doble fuente B coincidente (Jagersma 2010 y Zólyomi 2017).
 
 ## 2. Reglas de trabajo que pidió Fabián
@@ -87,12 +87,11 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
 - **Ficha «computadora»**: verificar *ĝiš-ḫur* y *-zu* en el ePSD2.
 - **LEX-003**: vocabulario para «Dios único».
 - **Ficha para «y»**: *ù* es un préstamo acadio; cotejar en Jagersma la coordinación nativa.
-- **Clase 1 de sumerio (ergativo)**: falta el ejercicio de ordenar piezas y la pregunta «¿quién lleva la -e?».
-- **Fusionar la rama** `claude/contexto-proyecto` en la rama principal, cuando Fabián quiera.
+- **TEC-003 y TEC-004**: falta que Fabián confirme las dos convenciones técnicas.
 
 ## 7. Bitácora
 
-- **16-10-2026**: andamiaje del repositorio (v0.1.0-borrador).
+- **27-09-2026**: andamiaje del repositorio (v0.1.0-borrador). El mismo día, en la sesión 2 sobre `main`: licencias, ORT-001 con ŋ (v0.2.0) e integración continua (v0.2.1, ampliada el 13 y el 15-10).
 - **17 y 18-10-2026**: Carta Fundacional, capas 0 a 6, decisiones de la §3 y Clase 1 de sumerio.
 - **19-10-2026**:
   - Investigación del nombre. Se verificó *ki-bé gi₄*, «restaurar» (Jagersma pp. 417, 442, 652).
@@ -100,18 +99,20 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - Se verificó *kašāru* en el CAD K.
   - Fabián propone este archivo de contexto y da permiso para usar el repositorio.
   - Fabián decide que se resuelvan las contradicciones según la Carta. Resultado:
-    - Versión v0.2.0-borrador.
+    - Versión v0.3.0-borrador (publicada entonces como v0.2.0).
     - 18 fichas, todas válidas.
     - 47 pruebas, todas pasan.
   - Fabián delega la adopción y fija que el repositorio es reflejo de la conversación. Resultado:
     - Se coteja Zólyomi (2017) como segunda fuente.
     - Se adoptan las fichas con doble fuente.
     - Se migran FUN-001, FUN-002, ESC-002, LEX-001, LEX-002, NOM-001 y ACA-001.
-    - Versión v0.3.0-borrador.
-  - Fabián pregunta qué falta para empezar las clases. Respuesta: las bases del sumerio permiten empezar ya; los pendientes son de capas altas y no bloquean. Se le piden tres decisiones: idiomas activos, minutos diarios y recordatorios.
+    - Versión v0.4.0-borrador (publicada entonces como v0.3.0).
+  - Fabián pregunta qué falta para empezar las clases. Respuesta: las bases del sumerio permiten empezar ya; los pendientes son de capas altas y no bloquean.
   - Se crea una memoria maestra privada en Claude Docs, con el contexto completo, incluido el personal, que no va en este repositorio público.
-  - Fabián fija su bloque activo de idiomas, que incluye ahora el acadio en paralelo. Se retoma la Clase 1 de sumerio con oraciones atestiguadas de Jagersma (pp. 81, 327, 365).
-  - El sumerio se reinicia desde cero: la Clase 1 nueva cubre los sonidos (fonología adoptada) y 8 signos (AN, KI, É, LÚ, GAL, LUGAL, DUMU, DUB); lugal = «hombre grande» (Jagersma pp. 77 y 121).
-  - Clase 1 de sumerio: 8/10, no alcanza el umbral del 90 %. Se reevalúa lo fallado.
-  - Primera reevaluación de la Clase 1: 3/5. Confunde visualmente 𒌉 y 𒁾 con 𒇽 y 𒃲. Se le envía una lámina con pistas.
-  - 21-10: reevaluación 2 de la Clase 1: 1,5/5. Se reenseñan dumu, dub y lugal con palabras clave; los bloques de signos serán más pequeños.
+- **19 a 21-10-2026**: empiezan las clases de sumerio con oraciones y signos atestiguados en Jagersma. El seguimiento personal de las clases queda en la memoria privada, no aquí.
+- **08-11-2026**: fusión de las dos líneas de trabajo (v0.4.1-borrador), por pedido de Fabián.
+  - `main` y `claude/contexto-proyecto` habían avanzado por separado desde el 27-09. Prevalece la Carta: rige ĝ (ESC-001) y el nombre eme-ĝir gibil. Se conservan las licencias, la integración continua, TEC-003 y TEC-004.
+  - Las versiones se renumeran en orden cronológico (`CHANGELOG.md`).
+  - `README.md`: sección «Autoría y papel de la IA».
+  - `main` pasa a ser la rama por defecto, como dice la TEC-003.
+  - Se corrigen en este archivo el número de fichas adoptadas (19) y la fecha del andamiaje (27-09).
