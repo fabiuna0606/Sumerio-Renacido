@@ -31,7 +31,8 @@ from repository_files import PROJECT_ROOT, repository_files, text_files
 
 UNVERIFIED_SOURCE = "FUENTE POR VERIFICAR"
 
-CARD_ID = re.compile(r"\b(?:FON|ORT|GRA|LEX|TEC)-[0-9]{3}\b")
+CARD_ID = re.compile(
+    r"\b(?:ACA|ESC|FON|FUN|GRA|LEX|NOM|ORT|TEC)-[0-9]{3}\b")
 
 DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
@@ -41,9 +42,14 @@ DOCUMENTATION_FILES = (
     "CLAUDE.md",
     "README.md",
     "CHANGELOG.md",
+    "CONTEXTO.md",
     "decisiones/PENDIENTES.md",
     "lexico/README.md",
 )
+
+# Fichas previstas en decisiones/PENDIENTES.md que todavía no se han
+# redactado. La documentación puede nombrarlas antes de que existan.
+PLANNED_CARD_IDS = frozenset({"LEX-003"})
 
 # .editorconfig permite espacios finales en los TSV del glosario, porque un
 # campo vacío al final de una línea es un dato, no un descuido.
@@ -189,7 +195,8 @@ class TestCardReferences(unittest.TestCase):
                 offenders.append(f"{name}: el archivo no existe")
                 continue
             text = path.read_text(encoding="utf-8")
-            for card_id in sorted(set(CARD_ID.findall(text)) - existing):
+            for card_id in sorted(set(CARD_ID.findall(text))
+                                 - existing - PLANNED_CARD_IDS):
                 offenders.append(f"{name}: {card_id}")
         self.assertEqual(
             offenders, [],
@@ -254,6 +261,48 @@ class TestSessionStartHook(unittest.TestCase):
             any(HOOK_PATH in command for command in commands),
             msg=f"{SETTINGS_PATH} no registra {HOOK_PATH}: {commands}",
         )
+
+
+class TestReadmeStatus(unittest.TestCase):
+    """La línea de estado del README coincide con las fichas y el CHANGELOG."""
+
+    STATUS = re.compile(
+        r"\*\*Estado:\*\*\s+(v[0-9]+\.[0-9]+\.[0-9]+-borrador)\.\s+"
+        r"([0-9]+)\s+fichas\s+de\s+decisión:\s+([0-9]+)\s+adoptadas,\s+"
+        r"([0-9]+)\s+verificadas?,\s+([0-9]+)\s+propuestas?\s+y\s+"
+        r"([0-9]+)\s+reemplazadas?\.")
+    STATE_FIELD = re.compile(r'^estado = "([a-z]+)"$', re.MULTILINE)
+    CHANGELOG_VERSION = re.compile(
+        r"^## (v[0-9]+\.[0-9]+\.[0-9]+-borrador)", re.MULTILINE)
+
+    def setUp(self) -> None:
+        readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+        match = self.STATUS.search(readme)
+        self.assertIsNotNone(match, msg="falta la línea de estado del README")
+        self.status = match
+
+    def test_counts_match_the_cards(self) -> None:
+        states = {}
+        for path in DECISIONS_DIR.glob("*.md"):
+            if not CARD_ID.fullmatch(path.stem):
+                continue
+            text = path.read_text(encoding="utf-8")
+            state = self.STATE_FIELD.search(text).group(1)
+            states[state] = states.get(state, 0) + 1
+        total, adopted, verified, proposed, replaced = (
+            int(value) for value in self.status.groups()[1:])
+        self.assertEqual(total, sum(states.values()))
+        self.assertEqual(adopted, states.get("adoptada", 0))
+        self.assertEqual(verified, states.get("verificada", 0))
+        self.assertEqual(proposed, states.get("propuesta", 0))
+        self.assertEqual(replaced, states.get("reemplazada", 0))
+        self.assertEqual(total, adopted + verified + proposed + replaced
+                         + states.get("rechazada", 0))
+
+    def test_version_matches_the_changelog(self) -> None:
+        changelog = (PROJECT_ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        latest = self.CHANGELOG_VERSION.search(changelog).group(1)
+        self.assertEqual(self.status.group(1), latest)
 
 
 if __name__ == "__main__":

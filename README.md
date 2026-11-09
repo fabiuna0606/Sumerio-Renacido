@@ -1,8 +1,14 @@
-# sumerio renacido (emegir gibil)
+# sumerio renacido (eme-ĝir gibil)
 
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
-**documentado y auditable**, con un perfil **equilibrado** entre fidelidad
-histórica y facilidad de aprendizaje.
+**documentado y auditable**, regido por la **Carta Fundacional de eme-ĝir
+gibil**. Sus principios inamovibles incluyen la **fidelidad fonética** al
+período base (Gudea y Ur III, c. 2150–2000 a. e. c.) y la **pureza léxica**:
+el costo de aprendizaje nunca justifica alterar un rasgo atestiguado. Cuando
+el sumerio esté consolidado, el mismo método se aplicará al **acadio**.
+
+**Estado:** v0.4.1-borrador. 27 fichas de decisión: 19 adoptadas, 1
+verificada, 2 propuestas y 5 reemplazadas.
 
 ## Propósito
 
@@ -19,8 +25,30 @@ Dos consecuencias prácticas:
 - La distancia entre lo atestiguado y lo reconstruido queda siempre visible
   mediante las etiquetas de procedencia.
 
-Las decisiones filológicas las toma **Fabián**, dueño del proyecto. El
-repositorio y sus herramientas solo las **registran y verifican**.
+## Autoría y papel de la IA
+
+**Sumerio Renacido es un proyecto de Fabián**, su fundador y dueño.
+
+- **Fabián eligió las fuentes** en las que se basa el estándar. La obra de
+  referencia principal es la tesis doctoral de Bram Jagersma, *A Descriptive
+  Grammar of Sumerian* (Universidad de Leiden, 2010), fijada en la ficha
+  FUN-002. Para el acadio se usa el *Chicago Assyrian Dictionary*.
+- **Fabián fijó las condiciones del proyecto**: el período de Ur III como
+  base, el cuneiforme como escritura principal, la pureza léxica, la
+  pronunciación fiel sin adaptarla al español, y que la investigación
+  académica con consenso pese siempre más que Wikipedia o cualquier fuente sin
+  fundamento. Sobre esas condiciones aprobó los principios de la Carta
+  Fundacional.
+- **Solo Fabián decide** que una ficha pase a adoptada, rechazada o
+  reemplazada.
+
+El proyecto se trabaja con **Claude**, una IA de Anthropic, que aparece en el
+historial como coautora de los commits. Su papel es de **secretaría técnica**:
+propone, redacta las fichas, coteja cada afirmación con las fuentes elegidas y
+mantiene el validador, las pruebas y la integración continua. **Las reglas del
+estándar no salen de la IA**, sino de las fuentes académicas, y la propia
+jerarquía de fuentes del proyecto le da a la IA peso nulo como evidencia
+(`CLAUDE.md` §3). La memoria de trabajo del proyecto está en `CONTEXTO.md`.
 
 ## Estructura de carpetas
 
@@ -33,9 +61,11 @@ repositorio y sus herramientas solo las **registran y verifican**.
 | `tests/` | Pruebas con `unittest`. |
 
 Archivos en la raíz: `CLAUDE.md` (instrucciones permanentes para las sesiones
-de trabajo), `CHANGELOG.md` (versiones del estándar), `LICENSE` (licencia del
+de trabajo), `CONTEXTO.md` (memoria de trabajo: estado, decisiones y
+bitácora), `CHANGELOG.md` (versiones del estándar), `LICENSE` (licencia del
 código), `LICENSE-CONTENT` (licencia del contenido) y `.editorconfig`. En
-`.github/workflows/` está la integración continua.
+`.github/workflows/` está la integración continua, y en `.claude/` el hook que
+comprueba el repositorio al empezar cada sesión de trabajo.
 
 ## Etiquetas de procedencia
 
@@ -49,6 +79,9 @@ Toda forma del estándar lleva una etiqueta que declara de dónde viene:
 - **`[NUEVO]`** — la forma es una invención declarada del proyecto, necesaria
   para hablar de lo que el corpus no cubre. Exige indicar la regla de
   formación empleada.
+- **`[ANTIGUO-PRÉSTAMO]`** — préstamo acadio antiguo, ya presente en el
+  sumerio atestiguado, que se conserva porque no existe un equivalente sumerio
+  nativo atestiguado (LEX-001).
 
 Estas etiquetas describen **el origen** de una forma, no su calidad ni su
 grado de aceptación: el estado de una decisión se indica aparte, en el campo
@@ -60,37 +93,26 @@ grado de aceptación: el estado de una decisión se indica aparte, en el campo
 propuesta → verificada → adoptada
 ```
 
-- **`propuesta`** — registrada, con puntajes o convención provisionales.
-- **`verificada`** — Fabián comprobó las fuentes.
-- **`adoptada`** — forma parte del estándar.
+- **`propuesta`** — registrada; sus fuentes pueden estar por cotejar.
+- **`verificada`** — sus fuentes están cotejadas en la obra misma, por Fabián
+  o por la secretaría técnica, y la ficha dice por quién.
+- **`adoptada`** — Fabián la aprobó: forma parte del estándar.
 
 Una ficha puede terminar también como **`rechazada`**, o como
 **`reemplazada`**, indicando en `reemplazada_por` la ficha que la sustituye.
+Nada se borra.
 
-**Solo Fabián cambia el estado de una ficha.**
-
-## Regla de decisión
-
-Las fichas de tipo `puntuada` aplican:
-
-```
-Puntaje = E − C + FL
-```
-
-donde `E` es la evidencia (0–3), `C` el costo de aprendizaje para un
-hispanohablante (0–3) y `FL` la carga funcional (0 o 1). Un rasgo se incluye
-**si y solo si Puntaje > 0**; un puntaje de 0 excluye. Las escalas son
-**ordinales**: el puntaje es una regla de decisión explícita, no una medida
-exacta. El detalle de las escalas está en `CLAUDE.md`.
+**Solo Fabián decide** que una ficha pase a adoptada, rechazada o reemplazada.
 
 ## Tipos de ficha
 
-- **`puntuada`** — decisión **binaria** sobre incluir o no un rasgo. **Siempre
-  se puntúa**, aunque `E < 2`: un `E` bajo lleva a **excluir** por la propia
-  fórmula, y no convierte la ficha en otro tipo.
-- **`convencion`** — **elección entre formas alternativas** (por ejemplo, la
-  posición del acento o la letra que se usa) cuando **ninguna alcanza
-  `E ≥ 2`**. Se adopta la convención académica y **no se puntúa**.
+- **`evidencia`** — el rasgo se decide por las fuentes, con la jerarquía de
+  `CLAUDE.md` §3. Exige al menos una fuente real. No se puntúa.
+- **`convencion`** — ninguna evidencia decide entre las opciones; se adopta
+  una convención declarada como tal.
+- **`puntuada`** — histórico: la regla `E − C + FL` del borrador v0.1.0
+  quedó en desuso el 19-10-2026, porque permitía excluir rasgos atestiguados
+  por su costo de aprendizaje. Solo se conserva en fichas reemplazadas.
 
 ## Cómo ejecutar las pruebas
 

@@ -15,32 +15,14 @@ import unicodedata
 import unittest
 from pathlib import Path
 
-from repository_files import PROJECT_ROOT, repository_files
-
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 import validate_decisions as validator  # noqa: E402
 
 DECISIONS_DIR = PROJECT_ROOT / "decisiones"
 
-EXPECTED_CARD_COUNT = 15
-
-EPSD2_SOURCE = (
-    "ePSD2, versión 2.7.2 (compilada el 2024-08-31), consultado el 2026-09-27"
-)
-
-# Fichas reales cuyas fuentes ya no son "FUENTE POR VERIFICAR". Las que no
-# aparecen aquí siguen sin ninguna fuente comprobada.
-REAL_CARD_SOURCES = {"ORT-001": [EPSD2_SOURCE]}
-
-# Letra descartada por ORT-001 (g con circunflejo, U+011D). Se escribe con
-# escapes para que este archivo de pruebas no la contenga.
-DISCARDED_LETTER = "\u011d"
-DISCARDED_LETTER_DECOMPOSED = "g\u0302"
-
-# Única ruta del repositorio que puede mencionarla: la ficha que describe la
-# opción descartada.
-DISCARDED_LETTER_EXEMPT_FILES = frozenset({"decisiones/ORT-001.md"})
+EXPECTED_CARD_COUNT = 27
 
 VALID_CARD = {
     "id": "TEC-900",
@@ -73,6 +55,21 @@ CONVENTION_CARD = {
     "estado": "propuesta",
     "verificacion": "PENDIENTE: ficha sintética usada solo en las pruebas",
     "fuentes": ["FUENTE POR VERIFICAR"],
+    "se_revisa_si": "Cambia el formato de las fichas.",
+    "reemplazada_por": "",
+}
+
+EVIDENCE_CARD = {
+    "id": "TEC-902",
+    "titulo": "Ficha de evidencia de prueba",
+    "area": "tecnica",
+    "tipo": "evidencia",
+    "pregunta": "¿Es válida esta ficha de evidencia de prueba?",
+    "opciones": ["Opción A", "Opción B"],
+    "decision": "Opción A.",
+    "estado": "verificada",
+    "verificacion": "Ficha sintética usada solo en las pruebas",
+    "fuentes": ["Fuente sintética de prueba, p. 1"],
     "se_revisa_si": "Cambia el formato de las fichas.",
     "reemplazada_por": "",
 }
@@ -156,20 +153,26 @@ class TestRealCards(unittest.TestCase):
                 text = path.read_text(encoding="utf-8")
                 self.assertTrue(unicodedata.is_normalized("NFC", text))
 
-    def test_real_cards_are_proposals(self) -> None:
+    def test_real_cards_with_firm_state_have_real_sources(self) -> None:
         for path in validator.card_paths(DECISIONS_DIR):
+            metadata, _ = validator.load_card(path)
+            if metadata["estado"] not in validator.SOURCED_STATES:
+                continue
             with self.subTest(ficha=path.name):
-                metadata, _ = validator.load_card(path)
-                self.assertEqual(metadata["estado"], "propuesta")
-
-    def test_real_cards_declare_the_expected_sources(self) -> None:
-        for path in validator.card_paths(DECISIONS_DIR):
-            with self.subTest(ficha=path.name):
-                metadata, _ = validator.load_card(path)
-                expected = REAL_CARD_SOURCES.get(
-                    path.stem, [validator.UNVERIFIED_SOURCE]
+                self.assertTrue(
+                    any(source != validator.UNVERIFIED_SOURCE
+                        for source in metadata["fuentes"])
                 )
-                self.assertEqual(metadata["fuentes"], expected)
+
+    def test_no_real_card_uses_learning_cost_to_decide(self) -> None:
+        """Capa 0 (fidelidad fonética): las fichas vigentes no se puntúan
+        con el costo de aprendizaje; solo pueden hacerlo las reemplazadas."""
+        for path in validator.card_paths(DECISIONS_DIR):
+            metadata, _ = validator.load_card(path)
+            with self.subTest(ficha=path.name):
+                if metadata["tipo"] == validator.SCORED_TYPE:
+                    self.assertEqual(metadata["estado"],
+                                     validator.REPLACED_STATE)
 
 
 class TestValidCards(CardDirectoryMixin, unittest.TestCase):
@@ -181,6 +184,10 @@ class TestValidCards(CardDirectoryMixin, unittest.TestCase):
 
     def test_convention_card_passes(self) -> None:
         self.write_card(CONVENTION_CARD)
+        self.assertEqual(validator.validate_directory(self.directory), {})
+
+    def test_evidence_card_passes(self) -> None:
+        self.write_card(EVIDENCE_CARD)
         self.assertEqual(validator.validate_directory(self.directory), {})
 
     def test_zero_score_excludes(self) -> None:
@@ -299,6 +306,22 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
             "una ficha de convención no puede llevar el campo de puntaje",
         )
 
+    def test_score_fields_in_evidence_card_are_detected(self) -> None:
+        card = dict(EVIDENCE_CARD, E=3, C=0, FL=1, puntaje=4, incluye=True)
+        self.write_card(card)
+        self.assertErrorMentions("TEC-902.md", "ficha de evidencia no puede")
+
+    def test_evidence_card_without_real_source_is_detected(self) -> None:
+        card = dict(EVIDENCE_CARD, estado="propuesta",
+                    fuentes=[validator.UNVERIFIED_SOURCE])
+        self.write_card(card)
+        self.assertErrorMentions("TEC-902.md", "necesita al menos una fuente")
+
+    def test_adopted_card_without_real_source_is_detected(self) -> None:
+        card = dict(CONVENTION_CARD, estado="adoptada")
+        self.write_card(card)
+        self.assertErrorMentions("TEC-901.md", "estado 'adoptada' necesita")
+
     def test_replacement_pointing_to_unknown_id_is_detected(self) -> None:
         self.write_card(dict(VALID_CARD, estado="reemplazada",
                              reemplazada_por="TEC-950"))
@@ -319,8 +342,8 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
         self.assertErrorMentions("TEC-900.md", "a la propia ficha")
 
     def test_text_not_in_nfc_is_detected(self) -> None:
-        decomposed = unicodedata.normalize("NFD", "š")
-        self.assertNotEqual(decomposed, "š")
+        decomposed = unicodedata.normalize("NFD", "ĝ")
+        self.assertNotEqual(decomposed, "ĝ")
         self.write_card(VALID_CARD, body=f"\nLa letra {decomposed} sin componer.\n")
         self.assertErrorMentions("TEC-900.md", "no está en NFC")
 
@@ -335,43 +358,6 @@ class TestInvalidCards(CardDirectoryMixin, unittest.TestCase):
         self.write_card(dict(CONVENTION_CARD, area="sintaxis"))
         report = validator.validate_directory(self.directory)
         self.assertEqual(sorted(report), ["TEC-901.md"])
-
-
-class TestDiscardedLetter(unittest.TestCase):
-    """ORT-001 decide la letra de la romanización práctica.
-
-    La letra descartada no puede aparecer en ningún archivo del repositorio,
-    salvo en la propia ficha ORT-001, que la menciona al describir la opción
-    descartada.
-    """
-
-    def test_exempt_file_exists(self) -> None:
-        for name in sorted(DISCARDED_LETTER_EXEMPT_FILES):
-            with self.subTest(archivo=name):
-                self.assertTrue(
-                    (PROJECT_ROOT / name).is_file(),
-                    msg=f"la excepción {name} ya no existe en el repositorio",
-                )
-
-    def test_discarded_letter_only_in_the_exempt_file(self) -> None:
-        offenders = []
-        for path, relative in repository_files():
-            if relative in DISCARDED_LETTER_EXEMPT_FILES:
-                continue
-            try:
-                text = path.read_text(encoding="utf-8")
-            except (UnicodeDecodeError, OSError):
-                continue
-            if DISCARDED_LETTER in text or DISCARDED_LETTER_DECOMPOSED in text:
-                offenders.append(relative)
-        self.assertEqual(
-            offenders,
-            [],
-            msg=(
-                "la letra descartada por ORT-001 aparece en archivos que "
-                f"deben usar la letra adoptada: {', '.join(offenders)}"
-            ),
-        )
 
 
 class TestReportAndExitCode(CardDirectoryMixin, unittest.TestCase):

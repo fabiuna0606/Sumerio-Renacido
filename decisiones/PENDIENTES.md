@@ -2,102 +2,149 @@
 
 Preguntas abiertas e inconsistencias detectadas. **Aquí no se resuelve nada**:
 las decisiones las toma Fabián. Este archivo solo las registra para que no se
-pierdan. Las entradas que Fabián ya resolvió se conservan marcadas como
-**RESUELTA**, con la resolución tal como la entregó, para no perder el rastro.
+pierdan. Lo resuelto no se borra: pasa a la sección final, con la fecha y la
+ficha que lo resolvió.
 
 ## Preguntas abiertas
 
-1. **Licencia del proyecto. RESUELTA (sesión 2).** El código de `scripts/` y
-   `tests/` se publica bajo la licencia MIT, en `LICENSE`, con titular
-   «Fabián» y año 2026. El resto del contenido —estándar, fichas, léxico y
-   documentación— se publica bajo CC BY-SA 4.0, con el aviso en
-   `LICENSE-CONTENT`.
-2. **Licencias de Oracc y del ePSD2 para datos derivados. RESUELTA
-   (sesión 2).** Los datos de Oracc y del ePSD2 están bajo CC BY-SA 3.0:
-   exigen atribución y compartir igual. El material derivado del ETCSL está
-   bajo CC BY-NC-SA 3.0: debe marcarse en su procedencia y no puede usarse en
-   materiales de pago. Queda registrado en la sección «Licencias y atribución»
-   del `README.md`.
-3. **Qué letra usa el ePSD2 (ORT-001). RESUELTA (sesión 2).** El ePSD2 usa
-   `ŋ`, por ejemplo en el lema `diŋir`. ORT-001 recoge esa decisión con el
-   ePSD2 como fuente, y el repositorio escribe `ŋ` en todos sus textos. La
-   ficha sigue en estado `propuesta` hasta que Fabián compruebe la convención
-   en las fuentes.
-4. **Forma de cita de «gibil» en el ePSD2.** El nombre en sumerio del proyecto
-   es «emegir gibil», porque `emegir` es la forma de cita del ePSD2 para «la
-   lengua sumeria». Falta comprobar en el ePSD2 la forma de cita de `gibil`
-   («nuevo»). FUENTE POR VERIFICAR.
+1. **FON-002 (no hay /o/).** Jagersma lo sostiene, pero Zólyomi (2017: 32)
+   recoge propuestas de seis vocales y cita a Keetman con siete o nueve. Sin
+   consenso de dos fuentes, la ficha queda `verificada` y rige Jagersma
+   (FUN-002). Para cerrarla hace falta una fuente C que discuta /o/.
+2. **Páginas de Zólyomi.** Se leyeron en el PDF oficial mediante extracción
+   automática. Conviene confirmarlas en el libro.
+3. **Fichas futuras:** LEX-003 (vocabulario monoteísta) y la ficha de
+   «computadora» (candidato dub ĝiš-ḫur-zu, componentes por verificar en el
+   ePSD2).
+4. **Forma de cita de «gibil» en el ePSD2.** Falta comprobar en el ePSD2 la
+   forma de cita de `gibil` («nuevo»), que forma parte del nombre del
+   proyecto. FUENTE POR VERIFICAR.
 5. **Las licencias se eligieron sin asesoría legal.** Ni la elección de MIT
    para el código, ni la de CC BY-SA 4.0 para el contenido, ni el resumen de
    las condiciones de Oracc, del ePSD2 y del ETCSL han pasado por revisión
    jurídica.
-
 6. **¿Se automatiza la fusión a `main`?** Fabián pidió automatizar todo y
-   no depender de él. Todas las comprobaciones del proyecto están ya
-   automatizadas, pero la **TEC-003** reserva la fusión a Fabián, y la regla 2
-   de `CLAUDE.md` impide resolver esa tensión sin él. Queda registrada sin
-   resolver, con las dos vías posibles y ninguna elegida: activar la fusión
-   automática de GitHub para los PR que lleguen en verde, o cambiar la
-   TEC-003. Mientras la ficha diga lo que dice, la fusión es el único paso
-   manual que queda.
+   no depender de él, pero la **TEC-003** reserva la fusión a Fabián. Quedan
+   dos vías posibles, ninguna elegida: activar la fusión automática de GitHub
+   para los PR que lleguen en verde, o cambiar la TEC-003. La fusión del
+   08-11-2026 (v0.4.1) la hizo la secretaría técnica porque Fabián lo pidió
+   de forma expresa («corrige lo que tengas que corregir»); eso no cambia la
+   regla general, que sigue abierta.
 
-   De esa misma fusión dependen dos cosas más: que `main` reciba el contenido
-   del estándar, y que arranque la ejecución semanal de la integración
-   continua, porque GitHub solo lanza los disparadores `schedule` desde la
-   rama por defecto del repositorio.
+## Inconsistencias abiertas
 
-## Inconsistencias detectadas
-
-Registradas sin resolver, conforme a la regla 2 de `CLAUDE.md`. Las que Fabián
-ya resolvió quedan marcadas como **RESUELTA**.
-
-1. **Fichas puntuadas con E < 2. RESUELTA (sesión 2).** No hay
-   inconsistencia: una ficha `puntuada` es una decisión binaria sobre incluir
-   o no un rasgo y **siempre se puntúa**, aunque `E < 2`; un `E` bajo lleva a
-   excluir por la propia fórmula. El tipo `convencion` queda reservado a la
-   elección entre formas alternativas cuando ninguna alcanza `E ≥ 2`. Las
-   cuatro fichas afectadas siguen siendo puntuadas y no cambian:
-
-   | Ficha | E | Puntaje | Resultado |
-   |-------|---|---------|-----------|
-   | FON-002 (vocal o) | 0 | 0 | excluir |
-   | FON-007 (posible fonema /ř/) | 1 | −1 | excluir |
-   | FON-008 (tonos) | 1 | −1 | excluir |
-   | FON-009 (vocales largas) | 1 | 0 | excluir |
-
-   La aclaración de los dos tipos está en `CLAUDE.md`,
-   `decisiones/PLANTILLA.md` y `README.md`.
-
-2. **`E` se registra por ficha, no por opción. RESUELTA (sesión 2).** Con los
-   dos tipos actuales basta un único valor de `E` por ficha: `puntuada`
-   puntúa un rasgo, no opciones, y `convencion` no puntúa. El desglose por
-   opción se aplaza al tipo `seleccion`, anotado en «Diseño futuro».
-
-3. **El texto de `verificacion` menciona puntajes en fichas sin puntaje.
-   RESUELTA (sesión 2).** Las cuatro fichas de convención (FON-010, ORT-001,
-   TEC-001 y TEC-002) llevan ahora
-   `verificacion = "PENDIENTE: comprobar la convención en las fuentes"`.
-
-4. **ORT-001 sigue abierta y el repositorio ya escribe la letra descartada.
-   RESUELTA (sesión 2).** ORT-001 decide usar `ŋ`, como el ePSD2. La letra
-   descartada se reemplazó por `ŋ` en todo el repositorio —documentación,
-   ficha FON-004 y nombre del proyecto—, excepto en ORT-001, donde sigue
-   apareciendo al describir la opción descartada. Una prueba de
-   `tests/test_decisions.py` falla si la letra descartada reaparece en
-   cualquier otro archivo. ORT-001 sigue en estado `propuesta`.
-
-5. **Referencias del proyecto sin datos bibliográficos completos.** Sigue
-   abierta en la parte de Foxvog: de Foxvog, *Introduction to Sumerian
-   Grammar*, no se ha registrado año ni edición. FUENTE POR VERIFICAR. Del
-   ePSD2 ya se registran versión y fecha de consulta (2.7.2, compilada el
-   2024-08-31, consultado el 2026-09-27); de Oracc y del ETCSL siguen sin
-   registrarse versión ni fecha de consulta. FUENTE POR VERIFICAR.
+1. **Referencias sin datos bibliográficos completos.** De Foxvog,
+   *Introduction to Sumerian Grammar*, no se ha registrado año ni edición, y
+   de Oracc y del ETCSL no se ha registrado versión ni fecha de consulta.
+   FUENTE POR VERIFICAR. Del ePSD2 ya se registran versión y fecha de
+   consulta (2.7.2, compilada el 2024-08-31, consultado el 2026-09-27).
+2. **TEC-003 y TEC-004 siguen en estado `propuesta`**, aunque la integración
+   continua y la estrategia de ramas que describen ya funcionan en el
+   repositorio. Falta que Fabián las confirme.
 
 ## Diseño futuro
 
 Anotado, sin implementar.
 
-1. **Tipo de ficha `seleccion`.** Cuando haya que elegir entre alternativas y
-   alguna alcance `E ≥ 2`, se creará un tipo `seleccion` con **puntaje por
-   opción**. Todavía no está implementado: ni el formato de ficha, ni
-   `decisiones/PLANTILLA.md`, ni `scripts/validate_decisions.py` lo admiten.
+1. **Tipo de ficha `seleccion`.** Se anotó el 27-09-2026 como un tipo con
+   **puntaje por opción**, para elegir entre alternativas cuando alguna
+   alcance `E ≥ 2`. Desde el 19-10-2026 la regla de puntaje está en desuso y
+   las fichas de evidencia se deciden por las fuentes, así que falta que
+   Fabián decida si este tipo sigue teniendo sentido. Ni el formato de ficha,
+   ni `decisiones/PLANTILLA.md`, ni `scripts/validate_decisions.py` lo
+   admiten.
+
+## Resuelto
+
+### 08-11-2026: fusión de las dos líneas de trabajo
+
+Entre el 27-09-2026 y el 08-11-2026 el repositorio avanzó por dos ramas que no
+se conocían entre sí: `main` (sesión 2: licencias, ORT-001 con ŋ, integración
+continua, TEC-003 y TEC-004) y `claude/contexto-proyecto` (alineación con la
+Carta y primeras adopciones). Se fusionaron siguiendo la decisión de Fabián
+del 19-10-2026: **donde el repositorio y la Carta discrepan, prevalece la
+Carta**.
+
+| Discrepancia | Rama `main` | Resolución |
+|---|---|---|
+| ĝ o ŋ | ORT-001 escribía ŋ y el nombre era «emegir gibil» | Rige ESC-001 (adoptada): **ĝ**, y el nombre **eme-ĝir gibil**. ORT-001 sigue `reemplazada` |
+| Tipos de ficha | `puntuada` siempre se puntúa | Rige el tipo `evidencia` de la Carta; `puntuada` es histórico |
+| Licencias | Resueltas en la sesión 2 | Se conservan: son compatibles con lo que prevé la Carta (una licencia abierta que obligue a citar para la norma y una licencia de software libre para el código) |
+| Números de versión | v0.2.0 y v0.2.1 | Se conservan; las versiones de la Carta pasan a v0.3.0 y v0.4.0 (`CHANGELOG.md`) |
+
+La prueba que fallaba si aparecía la letra ĝ fuera de ORT-001 se retiró, porque
+contradice ESC-001. Las demás comprobaciones automáticas de `main` se
+conservan.
+
+### 19-10-2026: el repositorio se alinea con la Carta Fundacional
+
+Decisión de Fabián: donde el repositorio y la Carta discrepan, **prevalece lo
+verificado en la Carta**.
+
+| Discrepancia | Antes | Resolución |
+|---|---|---|
+| ĝ o ŋ | ORT-001: usar la letra del ePSD2 | ESC-001 (adoptada): **ĝ**; al buscar en el ePSD2 se cambia por ŋ |
+| *b d g* | FON-003: se admitía la pronunciación sonora en los niveles iniciales | FON-011: [p t k] sin aspiración, sin excepción por nivel |
+| ř | FON-007: excluir y usar el lema del ePSD2 | FON-012: no es fonema; ante vocal [ɾ], a final de sílaba se pierde |
+| Vocales largas | FON-009: excluidas | FON-013: 8 vocales, a e i u breves y largas |
+| Acento | FON-010: en la raíz, sin fuente | FON-014: fijo en la última sílaba |
+| Método | `E − C + FL` y un nivel de «calco del acadio» | Fichas de tipo `evidencia` y jerarquías de la Carta (`CLAUDE.md` §2 y §3); `puntuada` queda como tipo histórico |
+
+Las fichas antiguas siguen en el directorio, en estado `reemplazada`.
+
+Con esto también quedan resueltas tres inconsistencias anteriores:
+
+- **Fichas puntuadas con E < 2.** Ya no queda ninguna ficha puntuada vigente.
+- **`E` registrado por ficha y no por opción.** Deja de aplicar al quedar en
+  desuso la regla de puntaje.
+- **ORT-001 seguía abierta mientras el repositorio ya escribía ĝ.** Resuelto
+  por ESC-001.
+
+La antigua pregunta «¿qué letra usa el ePSD2?» queda contestada: según la
+Carta, el ePSD2 escribe ŋ (por ejemplo, saŋ).
+
+### 19-10-2026 (segunda parte): adopción y migración
+
+Fabián delegó la adopción («hazlo como hemos venido trabajando y resuelve
+tú») y fijó que el repositorio refleja la conversación y la Carta, no al
+revés.
+
+- **Segunda fuente.** Se cotejó Zólyomi (2017). Coincide con Jagersma en
+  FON-001, FON-004, FON-005, FON-006, FON-008 y FON-011 a FON-014, que pasan
+  a `adoptada` con doble fuente B. FON-002 sigue `verificada` (pregunta
+  abierta 1).
+- **Decisiones migradas a fichas:**
+  - FUN-001 (período base).
+  - FUN-002 (Jagersma, obra de referencia).
+  - ESC-002 (Noto Sans Cuneiform, estilo Ur III).
+  - LEX-001 (préstamos acadios antiguos).
+  - LEX-002 (vocabulario religioso).
+  - NOM-001 (nombre del fundador).
+  - ACA-001 (paleobabilónico).
+- **TEC-001 y TEC-002.** Se corrigió su texto de verificación, que hablaba
+  de puntajes que no tienen, y pasan a `adoptada`.
+
+### 27-09-2026: resoluciones de Fabián en la sesión 2 (rama `main`)
+
+Se conservan tal como se registraron, para no perder el rastro.
+
+- **Licencia del proyecto.** El código de `scripts/` y `tests/` se publica
+  bajo la licencia MIT, en `LICENSE`, con titular «Fabián» y año 2026. El
+  resto del contenido —estándar, fichas, léxico y documentación— se publica
+  bajo CC BY-SA 4.0, con el aviso en `LICENSE-CONTENT`.
+- **Licencias de Oracc y del ePSD2 para datos derivados.** Los datos de
+  Oracc y del ePSD2 están bajo CC BY-SA 3.0: exigen atribución y compartir
+  igual. El material derivado del ETCSL está bajo CC BY-NC-SA 3.0: debe
+  marcarse en su procedencia y no puede usarse en materiales de pago. Queda
+  registrado en la sección «Licencias y atribución» del `README.md`.
+- **Qué letra usa el ePSD2 (ORT-001).** El ePSD2 usa ŋ, por ejemplo en el
+  lema `diŋir`. ORT-001 recogió esa decisión con el ePSD2 como fuente.
+  *(Superado el 19-10-2026 por ESC-001.)*
+- **Fichas puntuadas con E < 2.** Una ficha `puntuada` siempre se puntúa,
+  aunque `E < 2`; FON-002, FON-007, FON-008 y FON-009 seguían siendo
+  puntuadas. *(Superado el 19-10-2026 por el tipo `evidencia`.)*
+- **`E` se registra por ficha, no por opción.** El desglose por opción se
+  aplazó al tipo `seleccion` (ver «Diseño futuro»).
+- **Texto de `verificacion` en las fichas de convención.** FON-010, ORT-001,
+  TEC-001 y TEC-002 pasaron a llevar
+  `verificacion = "PENDIENTE: comprobar la convención en las fuentes"`.
