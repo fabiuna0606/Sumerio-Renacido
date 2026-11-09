@@ -168,11 +168,13 @@ sesión e informa del resultado.
 
 ## 8. Ramas e integración continua
 
-- **Estrategia de ramas (TEC-003):** `main` es la rama **estable y por
-  defecto**. Cada sesión trabaja en **su propia rama** y entra a `main` **solo
-  mediante un PR que Fabián fusiona**.
-- **Integración continua (TEC-004):** **ningún PR se fusiona con la CI en
-  rojo.** El workflow `.github/workflows/ci.yml` ejecuta
+- **Estrategia de ramas (TEC-003, adoptada el 09-11-2026):** `main` es la
+  rama **estable y por defecto**. Cada sesión trabaja en **su propia rama** y
+  entra a `main` mediante un PR, que **la secretaría técnica fusiona solo si
+  la CI está en verde**. Las decisiones del estándar las sigue tomando Fabián
+  en la conversación de trabajo; el PR solo las registra.
+- **Integración continua (TEC-004, adoptada el 09-11-2026):** **ningún PR
+  se fusiona con la CI en rojo.** El workflow `.github/workflows/ci.yml` ejecuta
   `python3 scripts/validate_decisions.py` y
   `python3 -m unittest discover -s tests` con Python 3.11, sin dependencias
   externas, en cada push, en cada PR, una vez por semana y a petición. Un job
