@@ -56,8 +56,10 @@ presentaron, cada una con sus razones a favor y en contra.
 - **Licencias sin asesoría legal.** Fabián acepta MIT y CC BY-SA 4.0 sin
   revisión jurídica. Sigue en pie la condición del ETCSL: su material no puede
   usarse en materiales de pago (`README.md`).
-- **Ramas antiguas.** Se borran las ramas ya contenidas en `main`; nada de su
-  historial se pierde.
+- **Ramas antiguas.** Se borran las ramas `claude/…` ya contenidas en `main`;
+  nada de su historial se pierde. El entorno de trabajo no tiene permiso para
+  borrar ramas en GitHub, así que las borra Fabián desde la página de ramas,
+  después de poner `main` como rama por defecto.
 
 También se completaron las referencias (antigua inconsistencia 1): Foxvog,
 CDLP 2.0 (2016-01-04); Oracc, sin número de versión, con fecha de consulta;

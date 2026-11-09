@@ -123,4 +123,4 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
   - Páginas de Zólyomi recomprobadas contra la edición impresa: las diez citas coinciden.
   - Licencias aceptadas sin asesoría legal.
   - Referencias completas: Foxvog, Oracc y ETCSL.
-  - Se borran las ramas antiguas ya contenidas en `main`.
+  - Las ramas antiguas `claude/…`, ya contenidas en `main`, las borra Fabián desde GitHub: el entorno de trabajo no tiene permiso para borrar ramas. Antes tiene que poner `main` como rama por defecto.
