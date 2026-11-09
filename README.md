@@ -3,7 +3,7 @@
 Proyecto para revivir el **sumerio** como lengua hablada mediante un estándar
 **documentado y auditable**, regido por la **Carta Fundacional de eme-ĝir
 gibil**. Sus principios inamovibles incluyen la **fidelidad fonética** al
-período base (Gudea y Ur III, c. 2150–2000 a.C.) y la **pureza léxica**:
+período base (Gudea y Ur III, c. 2150–2000 a. e. c.) y la **pureza léxica**:
 el costo de aprendizaje nunca justifica alterar un rasgo atestiguado. Cuando
 el sumerio esté consolidado, el mismo método se aplicará al **acadio**.
 

@@ -40,7 +40,7 @@ Estado actual: **v0.3.0-borrador**, la primera con decisiones adoptadas.
 
 - **Capa 0**: nueve principios, aprobados el 18-10-2026 (edición 0.1).
 - **Obra de referencia principal**: Jagersma (2010), *A Descriptive Grammar of Sumerian*.
-- **Período estándar** (FUN-001): neosumerio de **Ur III** (siglo XXI a.C.).
+- **Período estándar** (FUN-001): neosumerio de **Ur III** (siglo XXI a. e. c.).
 - **Acadio** (ACA-001): período estándar **paleobabilónico**.
 - **ESC-001**: la nasal velar se escribe **ĝ**, aunque ePSD2 y Oracc usan ŋ.
 - **ESC-002**: fuente **Noto Sans Cuneiform**, con glifos de estilo Ur III, que coinciden con los glifos de referencia de Unicode.
@@ -70,8 +70,8 @@ Fabián quiere un nombre que deje implícita la restauración del conocimiento p
 
 | Pieza | Procedencia | Referencia |
 |---|---|---|
-| *igi-ĝu₁₀-in-ši-ĝál* | `[ATESTIGUADO]`: nombre de persona, Lagash, siglo XXI a.C. | Jagersma 2010, p. 536, ej. 88b (TCTI 1:L.618 4:10) |
-| *igi-ĝu₁₀-an-šè-ĝál* | `[ATESTIGUADO]`, siglo XXIV a.C. Solo como nota histórica | Jagersma 2010, pp. 21, 535–536, ej. 88a |
+| *igi-ĝu₁₀-in-ši-ĝál* | `[ATESTIGUADO]`: nombre de persona, Lagash, siglo XXI a. e. c. | Jagersma 2010, p. 536, ej. 88b (TCTI 1:L.618 4:10) |
+| *igi-ĝu₁₀-an-šè-ĝál* | `[ATESTIGUADO]`, siglo XXIV a. e. c. Solo como nota histórica | Jagersma 2010, pp. 21, 535–536, ej. 88a |
 | *šiṭir šamê*, «escritura del cielo» (las estrellas) | Frase acadia atestiguada en inscripciones neoasirias y neobabilónicas | Rochberg 2004, p. 1 |
 | *akaššar*, «reparo, restauro» | *kašāru* A, paleobabilónico *ikšur — ikaššar*. Los objetos atestiguados son muros, edificios y ruinas | CAD K, pp. 284–285 |
 | Nombre completo | `[DERIVADO]`: construido con reglas nativas, no atestiguado como nombre | — |

@@ -24,7 +24,7 @@ las verifica.
 
 1. **Identidad.** Es sumerio. Ninguna regla nueva contradice una regla atestiguada.
 2. **Base.** Sumerio del sur de Mesopotamia en la época de Gudea de Lagash y
-   Ur III (c. 2150–2000 a.C.); dialecto de referencia: el neosumerio estándar.
+   Ur III (c. 2150–2000 a. e. c.); dialecto de referencia: el neosumerio estándar.
 3. **Escritura.** El cuneiforme es la escritura principal; las demás formas
    escritas lo transcriben.
 4. **Pureza.** No se crean préstamos ni calcos de otras lenguas.
