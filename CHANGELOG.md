@@ -18,6 +18,23 @@ Fundacional. Las dos usaron el número v0.2.0. Al fusionarlas, las versiones
 quedaron en orden cronológico: las de la Carta, antes publicadas como v0.2.0
 y v0.3.0, son ahora **v0.3.0** y **v0.4.0**.
 
+## v0.4.2-borrador (09-11-2026)
+
+Decisiones de Fabián sobre los pendientes. No cambia ninguna decisión de la
+lengua.
+
+- **TEC-003** (adoptada): la secretaría técnica fusiona los PR a `main` solo
+  si la integración continua está en verde. **TEC-004** (adoptada): ningún PR
+  se fusiona con la CI en rojo.
+- Se descarta el tipo de ficha `seleccion`, pensado para la regla de puntaje
+  en desuso.
+- **FON-002** sigue `verificada`. Fuente C encontrada: Smith, *JCS* 59 (2007),
+  que defiende siete vocales; como es anterior a Jagersma (2010), rige FUN-002.
+- Páginas de Zólyomi (2017) recomprobadas contra la edición impresa.
+- Licencias aceptadas sin asesoría legal.
+- Referencias de `CLAUDE.md` §4 completas para Zólyomi, Foxvog, Oracc y el
+  ETCSL.
+
 ## v0.4.1-borrador (08-11-2026)
 
 Fusión de las dos líneas de trabajo en `main`. No cambia ninguna decisión del
